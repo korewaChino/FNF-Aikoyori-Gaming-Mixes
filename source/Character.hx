@@ -496,7 +496,6 @@ class Character extends FlxSprite
 
 				playAnim('idle');
 			case 'sunflower':
-				// DAD ANIMATION LOADING CODE
 				tex = Paths.getSparrowAtlas('characters/sunflower');
 				frames = tex;
 				animation.addByPrefix('idle', 'sunflower-vibe', 24,false);
@@ -512,6 +511,20 @@ class Character extends FlxSprite
 				addOffset("singRIGHT", -52, 12);
 				addOffset("singLEFT", 31, 16);
 				addOffset("singDOWN", -48,-7);
+			case 'zomboss':
+				tex = Paths.getSparrowAtlas('characters/zomboss');
+				frames = tex;
+				animation.addByPrefix('idle', 'zomboss-bop', 24,false);
+				animation.addByPrefix('singUP', 'zomboss-singUp', 24);
+				animation.addByPrefix('singRIGHT', 'zomboss-singRight', 24);
+				animation.addByPrefix('singDOWN', 'zomboss-singDown', 24);
+				animation.addByPrefix('singLEFT', 'zomboss-singLeft', 24);
+
+				addOffset('idle',100,0);
+				addOffset("singUP", 122, 43);
+				addOffset("singRIGHT", 100, 2);
+				addOffset("singLEFT", 243, 38);
+				addOffset("singDOWN", 100,-1);
 	
 		}
 
