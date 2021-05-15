@@ -163,7 +163,7 @@ class TitleState extends MusicBeatState
 		// bg.updateHitbox();
 		add(bg);
 
-		logoBl = new FlxSprite(-150, -100);
+		logoBl = new FlxSprite(0, 0);
 		logoBl.frames = Paths.getSparrowAtlas('logoBumpin');
 		logoBl.antialiasing = true;
 		logoBl.animation.addByPrefix('bump', 'logo bumpin', 24);
@@ -309,7 +309,7 @@ class TitleState extends MusicBeatState
 				// Get current version of Kade Engine
 
 				//var http = new haxe.Http("https://raw.githubusercontent.com/KadeDev/Kade-Engine/master/version.downloadMe");
-				var http = new haxe.Http("https://raw.githubusercontent.com/KadeDev/Kade-Engine/patchnotes/version.downloadMe");
+				var http = new haxe.Http("https://raw.githubusercontent.com/Aikoyori/FNF-Aiko-Video-Game-Mix/master/newVersioning.aikoyorigaming");
 				var returnedData:Array<String> = [];
 				
 				http.onData = function (data:String)
@@ -390,14 +390,18 @@ class TitleState extends MusicBeatState
 			gfDance.animation.play('danceLeft');
 
 		FlxG.log.add(curBeat);
-
+		if(!skippedIntro)
 		switch (curBeat)
 		{
 			case 1:
-				createCoolText(['ninjamuffin99', 'phantomArcade', 'kawaisprite', 'evilsk8er']);
+				createCoolText(['courtery of']);
 			// credTextShit.visible = true;
-			case 3:
-				addMoreText('present');
+			case 2:
+				addMoreText('ninjamuffin99');
+				addMoreText('phantomArcade');
+				addMoreText('kawaisprite');
+				addMoreText('evilsk8er');
+				addMoreText('KadeDeveloper');
 			// credTextShit.text += '\npresent...';
 			// credTextShit.addText();
 			case 4:
@@ -406,18 +410,10 @@ class TitleState extends MusicBeatState
 			// credTextShit.text = 'In association \nwith';
 			// credTextShit.screenCenter();
 			case 5:
-				if (Main.watermarks)
-					createCoolText(['Kade Engine', 'by']);
-				else
-					createCoolText(['In Partnership', 'with']);
+				createCoolText(['Mod', 'by']);
 			case 7:
-				if (Main.watermarks)
-					addMoreText('KadeDeveloper');
-				else
-				{
-					addMoreText('Newgrounds');
-					ngSpr.visible = true;
-				}
+				addMoreText('Aikoyori');
+	
 			// credTextShit.text += '\nNewgrounds';
 			case 8:
 				deleteCoolText();
@@ -438,13 +434,12 @@ class TitleState extends MusicBeatState
 			// credTextShit.text = "Friday";
 			// credTextShit.screenCenter();
 			case 13:
-				addMoreText('Friday');
-			// credTextShit.visible = true;
-			case 14:
-				addMoreText('Night');
+				addMoreText('Friday Night Funkin');
 			// credTextShit.text += '\nNight';
+			case 14:
+				addMoreText('Aikoyoris'); // credTextShit.text += '\nFunkin';
 			case 15:
-				addMoreText('Funkin'); // credTextShit.text += '\nFunkin';
+				addMoreText('Gaming Mixes');
 
 			case 16:
 				skipIntro();

@@ -495,6 +495,24 @@ class Character extends FlxSprite
 				addOffset("singDOWN-alt", -30, -27);
 
 				playAnim('idle');
+			case 'sunflower':
+				// DAD ANIMATION LOADING CODE
+				tex = Paths.getSparrowAtlas('characters/sunflower');
+				frames = tex;
+				animation.addByPrefix('idle', 'sunflower-vibe', 24,false);
+				animation.addByIndices('danceRight', 'sunflower-vibe',[29,0,1,2,3,4,5,6,7,8,9,10,11,12,13,14],"", 24,false);
+				animation.addByIndices('danceLeft', 'sunflower-vibe',[15,16,17,18,19,20,21,22,23,24,25,26,27,28,29],"", 24,false);
+				animation.addByPrefix('singUP', 'sunflower-note-up', 24);
+				animation.addByPrefix('singRIGHT', 'sunflower-note-right', 24);
+				animation.addByPrefix('singDOWN', 'sunflower-note-down', 24);
+				animation.addByPrefix('singLEFT', 'sunflower-note-left', 24);
+
+				addOffset('idle',101,63);
+				addOffset("singUP", -14, 17);
+				addOffset("singRIGHT", -52, 12);
+				addOffset("singLEFT", 31, 16);
+				addOffset("singDOWN", -48,-7);
+	
 		}
 
 		dance();
