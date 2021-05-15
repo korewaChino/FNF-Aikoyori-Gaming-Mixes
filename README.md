@@ -1,8 +1,8 @@
-![Kade Engine logo](https://user-images.githubusercontent.com/26305836/110529589-4b4eb600-80ce-11eb-9c44-e899118b0bf0.png)
+![Kade Engine logo](https://raw.githubusercontent.com/Aikoyori/FNF-Aiko-Video-Game-Mix/master/AikoGamingMixesLogo.png)
 
 ![GitHub commits since latest release (by date)](https://img.shields.io/github/commits-since/Aikoyori/FNF-Aiko-Video-Game-Mix/latest) ![GitHub repo size](https://img.shields.io/github/repo-size/Aikoyori/FNF-Aiko-Video-Game-Mix) ![Lines of code](https://img.shields.io/tokei/lines/github/Aikoyori/FNF-Aiko-Video-Game-Mix) ![Supported platforms](https://img.shields.io/badge/supported%20platforms-windows%2C%20macOS%2C%20linux%2C%20html5-blue) ![GitHub all releases](https://img.shields.io/github/downloads/Aikoyori/FNF-Aiko-Video-Game-Mix/total) ![GitHub](https://img.shields.io/github/license/Aikoyori/FNF-Aiko-Video-Game-Mix) ![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/Aikoyori/FNF-Aiko-Video-Game-Mix?include_prereleases&label=latest%20version) 
 
-# Friday Night Funkin': Kade Engine
+# Friday Night Funkin': Aikoyori's Gaming Mixes
 ## Friday Night Funkin'
 **Friday Night Funkin'** is a rhythm game originally made for Ludum Dare 47 "Stuck In a Loop".
 
@@ -16,11 +16,9 @@ Links: **[GameBanana mod page](https://gamebanana.com/gamefiles/16761) ⋅ [play
 
 **REMEMBER**: This is a **mod**. This is not the vanilla game and should be treated as a **modification**. This is not and probably will never be official, so don't get confused.
 
-## Website ([KadeDev.github.io/kade-engine/](https://KadeDev.github.io/Kade-Engine/))
-If you're looking for documentation, changelogs, or guides, you can find those on the Kade Engine website.
-
 ## FNF Aikoyori's Gaming Mixes
 
+Links: **[Play Now!](https://aikoyori.github.io/FNF-Aiko-Video-Game-Mix/)**
 **FNF Aikoyori's Gaming Mixes** is a mod for Friday Night Funkin' that aims to add custom songs from various games plus the characters.
 
 # Credits
@@ -33,3 +31,7 @@ This game was made with love to Newgrounds and its community. Extra love to Tom 
 ### Kade Engine
 - [KadeDeveloper](https://twitter.com/KadeDeveloper) - Maintainer and lead programmer
 - [The contributors](https://github.com/KadeDev/Kade-Engine/graphs/contributors)
+
+### Aikoyori's Gaming Mixes
+- Aikoyori - Most of the things except for original songs
+- Musical Artists whose musics are featured in the mod
