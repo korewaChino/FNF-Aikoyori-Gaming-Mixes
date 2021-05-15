@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="sunflower.png">
+	<!-- Created with Adobe Animate version 21.0.3.38773 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="sunflower-note-down0000" x="12" y="12" width="510" height="434"/>
+	<SubTexture name="sunflower-note-down0001" x="12" y="12" width="510" height="434"/>
+	<SubTexture name="sunflower-note-down0002" x="534" y="12" width="510" height="434"/>
+	<SubTexture name="sunflower-note-down0003" x="534" y="12" width="510" height="434"/>
+	<SubTexture name="sunflower-note-left0000" x="1056" y="12" width="589" height="457"/>
+	<SubTexture name="sunflower-note-left0001" x="1056" y="12" width="589" height="457"/>
+	<SubTexture name="sunflower-note-left0002" x="1657" y="12" width="589" height="457"/>
+	<SubTexture name="sunflower-note-left0003" x="1657" y="12" width="589" height="457"/>
+	<SubTexture name="sunflower-note-right0000" x="2258" y="12" width="506" height="458"/>
+	<SubTexture name="sunflower-note-right0001" x="2258" y="12" width="506" height="458"/>
+	<SubTexture name="sunflower-note-right0002" x="2776" y="12" width="506" height="458"/>
+	<SubTexture name="sunflower-note-right0003" x="2776" y="12" width="506" height="458"/>
+	<SubTexture name="sunflower-note-up0000" x="3294" y="12" width="544" height="458"/>
+	<SubTexture name="sunflower-note-up0001" x="3294" y="12" width="544" height="458"/>
+	<SubTexture name="sunflower-note-up0002" x="12" y="482" width="544" height="458"/>
+	<SubTexture name="sunflower-note-up0003" x="12" y="482" width="544" height="458"/>
+	<SubTexture name="sunflower-vibe0000" x="568" y="482" width="659" height="505"/>
+	<SubTexture name="sunflower-vibe0001" x="1239" y="482" width="659" height="505"/>
+	<SubTexture name="sunflower-vibe0002" x="1910" y="482" width="659" height="505"/>
+	<SubTexture name="sunflower-vibe0003" x="2581" y="482" width="659" height="505"/>
+	<SubTexture name="sunflower-vibe0004" x="3252" y="482" width="659" height="505"/>
+	<SubTexture name="sunflower-vibe0005" x="12" y="999" width="659" height="505"/>
+	<SubTexture name="sunflower-vibe0006" x="683" y="999" width="659" height="505"/>
+	<SubTexture name="sunflower-vibe0007" x="1354" y="999" width="659" height="505"/>
+	<SubTexture name="sunflower-vibe0008" x="2025" y="999" width="659" height="505"/>
+	<SubTexture name="sunflower-vibe0009" x="2696" y="999" width="659" height="505"/>
+	<SubTexture name="sunflower-vibe0010" x="3367" y="999" width="659" height="505"/>
+	<SubTexture name="sunflower-vibe0011" x="12" y="1516" width="659" height="505"/>
+	<SubTexture name="sunflower-vibe0012" x="683" y="1516" width="659" height="505"/>
+	<SubTexture name="sunflower-vibe0013" x="1354" y="1516" width="659" height="505"/>
+	<SubTexture name="sunflower-vibe0014" x="2025" y="1516" width="659" height="505"/>
+	<SubTexture name="sunflower-vibe0015" x="2696" y="1516" width="659" height="505"/>
+	<SubTexture name="sunflower-vibe0016" x="568" y="482" width="659" height="505"/>
+	<SubTexture name="sunflower-vibe0017" x="3367" y="1516" width="659" height="505"/>
+	<SubTexture name="sunflower-vibe0018" x="12" y="2033" width="659" height="505"/>
+	<SubTexture name="sunflower-vibe0019" x="683" y="2033" width="659" height="505"/>
+	<SubTexture name="sunflower-vibe0020" x="1354" y="2033" width="659" height="505"/>
+	<SubTexture name="sunflower-vibe0021" x="2025" y="2033" width="659" height="505"/>
+	<SubTexture name="sunflower-vibe0022" x="2696" y="2033" width="659" height="505"/>
+	<SubTexture name="sunflower-vibe0023" x="3367" y="2033" width="659" height="505"/>
+	<SubTexture name="sunflower-vibe0024" x="12" y="2550" width="659" height="505"/>
+	<SubTexture name="sunflower-vibe0025" x="683" y="2550" width="659" height="505"/>
+	<SubTexture name="sunflower-vibe0026" x="1354" y="2550" width="659" height="505"/>
+	<SubTexture name="sunflower-vibe0027" x="2025" y="2550" width="659" height="505"/>
+	<SubTexture name="sunflower-vibe0028" x="2696" y="2550" width="659" height="505"/>
+	<SubTexture name="sunflower-vibe0029" x="3367" y="2550" width="659" height="505"/>
+	<SubTexture name="sunflower-vibe0030" x="12" y="3067" width="659" height="505"/>
+	<SubTexture name="sunflower-vibe0031" x="683" y="3067" width="659" height="505"/>
+</TextureAtlas>
