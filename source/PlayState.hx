@@ -685,6 +685,15 @@ class PlayState extends MusicBeatState
 	
 						add(stageCurtains);
 				}
+			case 'pvzday':
+				{
+						defaultCamZoom = 0.7;
+						curStage = 'pvzday';
+						var bgx:FlxSprite = new FlxSprite(-500, -300).loadGraphic(Paths.image('pvzday/pvzdaybg','aikoweek1'));
+						//bgx.setGraphicSize(Std.int(bgx.width));
+						bgx.antialiasing = true;
+						add(bgx);
+				}
 			default:
 			{
 					defaultCamZoom = 0.9;
