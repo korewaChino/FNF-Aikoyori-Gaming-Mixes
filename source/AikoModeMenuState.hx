@@ -264,7 +264,7 @@ class AikoModeMenuState extends MusicBeatState
 			}
 
 			PlayState.storyPlaylist = weekData[curWeek];
-			PlayState.isStoryMode = true;
+			PlayState.isAikoMode = true;
 			selectedWeek = true;
 
 			var diffic = "";

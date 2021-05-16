@@ -63,6 +63,8 @@ class GameOverSubstate extends MusicBeatSubstate
 
 			if (PlayState.isStoryMode)
 				FlxG.switchState(new StoryMenuState());
+			if (PlayState.isAikoMode)
+				FlxG.switchState(new AikoModeMenuState());
 			else
 				FlxG.switchState(new FreeplayState());
 			PlayState.loadRep = false;

@@ -52,6 +52,26 @@ class Highscore
 				setScore(daWeek, score);
 		}else trace('BotPlay detected. Score saving is disabled.');
 	}
+	public static function saveAikoWeekScore(week:Int = 1, score:Int = 0, ?diff:Int = 0):Void
+	{
+
+		#if !switch
+		NGio.postScore(score, "Aikoyori Week " + week);
+		#end
+
+		if(!FlxG.save.data.botplay)
+		{
+			var daWeek:String = formatSong('aikoweek' + week, diff);
+
+			if (songScores.exists(daWeek))
+			{
+				if (songScores.get(daWeek) < score)
+					setScore(daWeek, score);
+			}
+			else
+				setScore(daWeek, score);
+		}else trace('BotPlay detected. Score saving is disabled.');
+	}
 
 	/**
 	 * YOU SHOULD FORMAT SONG WITH formatSong() BEFORE TOSSING IN SONG VARIABLE
