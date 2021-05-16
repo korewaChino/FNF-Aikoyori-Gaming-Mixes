@@ -24,7 +24,7 @@ class AikoModeMenuState extends MusicBeatState
 	var scoreText:FlxText;
 
 	var weekData:Array<Dynamic> = [
-		['Zombies-on-your-lawn'],
+		['Brainiac-Maniac','Zombies-on-your-lawn'],
 	];
 	var curDifficulty:Int = 1;
 
