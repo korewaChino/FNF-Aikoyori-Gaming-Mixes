@@ -693,6 +693,7 @@ class PlayState extends MusicBeatState
 						var bgx:FlxSprite = new FlxSprite(-500, -300).loadGraphic(Paths.image('pvzday/pvzdaybg','aikoweek1'));
 						//bgx.setGraphicSize(Std.int(bgx.width));
 						bgx.antialiasing = true;
+						bgx.active = false;
 						add(bgx);
 				}			
 			case 'pvzmoon':
@@ -702,6 +703,7 @@ class PlayState extends MusicBeatState
 						var bgx:FlxSprite = new FlxSprite(-500, -300).loadGraphic(Paths.image('pvzmoon/pvzmoonbg','aikoweek1'));
 						//bgx.setGraphicSize(Std.int(bgx.width));
 						bgx.antialiasing = true;
+						bgx.active = false;
 						add(bgx);
 				}
 			default:

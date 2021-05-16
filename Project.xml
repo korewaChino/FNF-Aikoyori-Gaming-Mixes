@@ -70,7 +70,7 @@
 		<library name="week4"    preload="false" />
 		<library name="week5"    preload="false" />
 		<library name="week6"    preload="false" />
-		<library name="aikoweek1"    preload="false" />
+		<library name="aikoweek1"    preload="true" />
 	</section>
 	
 	<assets path="assets/songs"    library="songs"    exclude="*.ogg" if="web"/>
