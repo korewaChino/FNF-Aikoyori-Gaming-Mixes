@@ -53,6 +53,9 @@ class OptionsMenu extends MusicBeatState
 			new FlashingLightsOption("Toggle flashing lights that can cause epileptic seizures and strain."),
 			new WatermarkOption("Turn off all watermarks from the engine."),
 			new BotPlay("Showcase your charts and mods with autoplay.")
+		]),
+		new OptionCatagory("Extras", [
+			new CheckForUpdatesOption("Check for Latest version of Aikoyori's Gaming Mixes"),
 		])
 		
 	];
