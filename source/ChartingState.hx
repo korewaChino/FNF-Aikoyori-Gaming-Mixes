@@ -610,7 +610,7 @@ class ChartingState extends MusicBeatState
 
 		curStep = recalculateSteps();
 
-		if (FlxG.keys.justPressed.ALT && UI_box.selected_tab == 0)
+		if (FlxG.keys.justPressed.ALT && UI_box.selected_tab == 1)
 		{
 			writingNotes = !writingNotes;
 		}
