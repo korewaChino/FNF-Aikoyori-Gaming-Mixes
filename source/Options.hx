@@ -324,7 +324,7 @@ class CheckForUpdatesOption extends Option
 
 	private override function updateDisplay():String
 	{
-		return (!FlxG.save.data.checkupdates ? "Do not check for Updates" : "Check for Updates");
+		return (!FlxG.save.data.checkupdates ? "Do not check for Updates" : "Do Check for Updates");
 	}
 }
 
