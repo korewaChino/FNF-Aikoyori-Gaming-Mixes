@@ -111,6 +111,14 @@ class Highscore
 
 		return songScores.get(formatSong('week' + week, diff));
 	}
+	
+	public static function getAikoWeekScore(week:Int, diff:Int):Int
+	{
+		if (!songScores.exists(formatSong('aikoweek' + week, diff)))
+			setScore(formatSong('aikoweek' + week, diff), 0);
+
+		return songScores.get(formatSong('aikoweek' + week, diff));
+	}
 
 	public static function load():Void
 	{
