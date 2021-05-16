@@ -694,6 +694,15 @@ class PlayState extends MusicBeatState
 						//bgx.setGraphicSize(Std.int(bgx.width));
 						bgx.antialiasing = true;
 						add(bgx);
+				}			
+			case 'pvzmoon':
+				{
+						defaultCamZoom = 0.7;
+						curStage = 'pvzmoon';
+						var bgx:FlxSprite = new FlxSprite(-500, -300).loadGraphic(Paths.image('pvzmoon/pvzmoonbg','aikoweek1'));
+						//bgx.setGraphicSize(Std.int(bgx.width));
+						bgx.antialiasing = true;
+						add(bgx);
 				}
 			default:
 			{
