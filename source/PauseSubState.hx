@@ -21,7 +21,7 @@ class PauseSubState extends MusicBeatSubstate
 {
 	var grpMenuShit:FlxTypedGroup<Alphabet>;
 
-	var menuItems:Array<String> = ['Resume', 'Restart Song', 'Exit to menu'];
+	var menuItems:Array<String> = ['Resume', 'Restart Song', 'Exit to week select', 'Exit to main menu'];
 	var curSelected:Int = 0;
 
 	var pauseMusic:FlxSound;
@@ -77,6 +77,10 @@ class PauseSubState extends MusicBeatSubstate
 		#if cpp
 			add(perSongOffset);
 		#end
+		if(!(PlayState.isAikoMode || PlayState.isStoryMode))
+			menuItems = ['Resume', 'Restart Song', 'Exit to song select', 'Exit to main menu'];
+		else
+			menuItems = ['Resume', 'Restart Song', 'Exit to week select', 'Exit to main menu'];
 
 		for (i in 0...menuItems.length)
 		{
@@ -128,7 +132,10 @@ class PauseSubState extends MusicBeatSubstate
 				{
 					grpMenuShit.clear();
 
-					menuItems = ['Restart Song', 'Exit to menu'];
+					if(!(PlayState.isAikoMode || PlayState.isStoryMode))
+						menuItems = ['Restart Song', 'Exit to song select', 'Exit to main menu'];
+					else
+						menuItems = ['Restart Song', 'Exit to week select', 'Exit to main menu'];
 
 					for (i in 0...menuItems.length)
 					{
@@ -153,7 +160,10 @@ class PauseSubState extends MusicBeatSubstate
 				{
 					grpMenuShit.clear();
 
-					menuItems = ['Restart Song', 'Exit to menu'];
+					if(!(PlayState.isAikoMode || PlayState.isStoryMode))
+						menuItems = ['Restart Song', 'Exit to song select', 'Exit to main menu'];
+					else
+						menuItems = ['Restart Song', 'Exit to week select', 'Exit to main menu'];
 
 					for (i in 0...menuItems.length)
 					{
@@ -181,7 +191,7 @@ class PauseSubState extends MusicBeatSubstate
 					close();
 				case "Restart Song":
 					FlxG.resetState();
-				case "Exit to menu":
+				case "Exit to song select" | "Exit to week select":
 					if(PlayState.loadRep)
 					{
 						FlxG.save.data.botplay = false;
@@ -198,7 +208,30 @@ class PauseSubState extends MusicBeatSubstate
 					#end
 					if (FlxG.save.data.fpsCap > 290)
 						(cast (Lib.current.getChildAt(0), Main)).setFPSCap(290);
-					
+					if(PlayState.isStoryMode)
+						FlxG.switchState(new StoryMenuState());
+					else if(PlayState.isAikoMode)
+						FlxG.switchState(new AikoModeMenuState());
+					else
+						FlxG.switchState(new FreeplayState());
+					//FlxG.switchState(new MainMenuState());
+				case "Exit to main menu":
+					if(PlayState.loadRep)
+					{
+						FlxG.save.data.botplay = false;
+						FlxG.save.data.scrollSpeed = 1;
+						FlxG.save.data.downscroll = false;
+					}
+					PlayState.loadRep = false;
+					#if windows
+					if (PlayState.luaModchart != null)
+					{
+						PlayState.luaModchart.die();
+						PlayState.luaModchart = null;
+					}
+					#end
+					if (FlxG.save.data.fpsCap > 290)
+						(cast (Lib.current.getChildAt(0), Main)).setFPSCap(290);
 					FlxG.switchState(new MainMenuState());
 			}
 		}
