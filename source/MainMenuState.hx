@@ -28,7 +28,7 @@ class MainMenuState extends MusicBeatState
 	var menuItems:FlxTypedGroup<FlxSprite>;
 
 	#if !switch
-	var optionShit:Array<String> = ['story mode', 'freeplay', 'donate', 'options'];
+	var optionShit:Array<String> = ['story mode', 'aikomode',  'freeplay','options'];
 	#else
 	var optionShit:Array<String> = ['story mode', 'freeplay'];
 	#end
@@ -91,6 +91,20 @@ class MainMenuState extends MusicBeatState
 
 		for (i in 0...optionShit.length)
 		{
+			if(optionShit[i]=="aikomode")
+			{
+				var menuItem:FlxSprite = new FlxSprite(0, 60 + (i * 140));
+				menuItem.frames = tex;
+				menuItem.animation.addByPrefix('idle', optionShit[i] + " basic", 24);
+				menuItem.animation.addByPrefix('selected', optionShit[i] + " white", 24);
+				menuItem.animation.play('idle');
+				menuItem.ID = i;
+				menuItem.screenCenter(X);
+				menuItems.add(menuItem);
+				menuItem.scrollFactor.set();
+				menuItem.antialiasing = true;
+				continue;
+			}
 			var menuItem:FlxSprite = new FlxSprite(0, 60 + (i * 160));
 			menuItem.frames = tex;
 			menuItem.animation.addByPrefix('idle', optionShit[i] + " basic", 24);
@@ -153,6 +167,7 @@ class MainMenuState extends MusicBeatState
 
 			if (controls.ACCEPT)
 			{
+				/*
 				if (optionShit[curSelected] == 'donate')
 				{
 					#if linux
@@ -160,6 +175,9 @@ class MainMenuState extends MusicBeatState
 					#else
 					FlxG.openURL('https://www.kickstarter.com/projects/funkin/friday-night-funkin-the-full-ass-game');
 					#end
+				}*/
+				if(false){
+					trace("HOW");
 				}
 				else
 				{
@@ -220,6 +238,9 @@ class MainMenuState extends MusicBeatState
 			case 'story mode':
 				FlxG.switchState(new StoryMenuState());
 				trace("Story Menu Selected");
+			case 'aikomode':
+				FlxG.switchState(new AikoModeMenuState());
+				trace("Aiko Mode Selected");
 			case 'freeplay':
 				FlxG.switchState(new FreeplayState());
 
