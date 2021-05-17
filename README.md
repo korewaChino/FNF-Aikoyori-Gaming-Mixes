@@ -17,8 +17,8 @@ Links: **[GameBanana mod page](https://gamebanana.com/gamefiles/16761) ⋅ [play
 **REMEMBER**: This is a **mod**. This is not the vanilla game and should be treated as a **modification**. This is not and probably will never be official, so don't get confused.
 
 ## FNF Aikoyori's Gaming Mixes
-
 Links: **[Play Now!](https://aikoyori.github.io/FNF-Aiko-Video-Game-Mix/)**
+
 **FNF Aikoyori's Gaming Mixes** is a mod for Friday Night Funkin' that aims to add custom songs from various games plus the characters.
 
 # Credits
