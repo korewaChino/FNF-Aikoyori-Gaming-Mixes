@@ -42,7 +42,7 @@ class AikoMenuItem extends FlxSpriteGroup
 			flashingInt += 1;
 	
 		if (flashingInt % fakeFramerate >= Math.floor(fakeFramerate / 2))
-			week.color = 0xFF33ffff;
+			week.color = 0xFFff407c;
 		else if (FlxG.save.data.flashing)
 			week.color = FlxColor.WHITE;
 	}
