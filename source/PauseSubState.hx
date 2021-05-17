@@ -57,6 +57,10 @@ class PauseSubState extends MusicBeatSubstate
 		levelDifficulty.setFormat(Paths.font('vcr.ttf'), 32);
 		levelDifficulty.updateHitbox();
 		add(levelDifficulty);
+		if(!(PlayState.isAikoMode || PlayState.isStoryMode))
+			menuItems = ['Resume', 'Restart Song', 'Exit to song select', 'Exit to main menu'];
+		else
+			menuItems = ['Resume', 'Restart Song', 'Exit to week select', 'Exit to main menu'];
 
 		levelDifficulty.alpha = 0;
 		levelInfo.alpha = 0;
@@ -77,10 +81,6 @@ class PauseSubState extends MusicBeatSubstate
 		#if cpp
 			add(perSongOffset);
 		#end
-		if(!(PlayState.isAikoMode || PlayState.isStoryMode))
-			menuItems = ['Resume', 'Restart Song', 'Exit to song select', 'Exit to main menu'];
-		else
-			menuItems = ['Resume', 'Restart Song', 'Exit to week select', 'Exit to main menu'];
 
 		for (i in 0...menuItems.length)
 		{

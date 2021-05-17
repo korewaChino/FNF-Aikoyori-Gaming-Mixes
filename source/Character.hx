@@ -577,7 +577,8 @@ class Character extends FlxSprite
 		{
 			case 'gf':
 				if (animation.curAnim.name == 'hairFall' && animation.curAnim.finished)
-					playAnim('danceRight');
+					dance();
+					//playAnim('danceRight');
 		}
 
 		super.update(elapsed);
