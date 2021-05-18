@@ -25,6 +25,8 @@ class Note extends FlxSprite
 	public var prevNote:Note;
 	public var modifiedByLua:Bool = false;
 	public var sustainLength:Float = 0;
+	public var _currentSustainDistance:Float = 0;
+	public var noteType:String = "normal";
 	public var isSustainNote:Bool = false;
 
 	public var noteScore:Float = 1;
@@ -37,7 +39,7 @@ class Note extends FlxSprite
 
 	public var rating:String = "shit";
 
-	public function new(strumTime:Float, noteData:Int, ?prevNote:Note, ?sustainNote:Bool = false)
+	public function new(strumTime:Float, noteData:Int, ?prevNote:Note, ?sustainNote:Bool = false, ?noteType = "normal")
 	{
 		super();
 
@@ -93,36 +95,46 @@ class Note extends FlxSprite
 				animation.addByPrefix('redScroll', 'red0');
 				animation.addByPrefix('blueScroll', 'blue0');
 				animation.addByPrefix('purpleScroll', 'purple0');
+				animation.addByPrefix('sunScroll', 'sun0');
 
 				animation.addByPrefix('purpleholdend', 'pruple end hold');
 				animation.addByPrefix('greenholdend', 'green hold end');
 				animation.addByPrefix('redholdend', 'red hold end');
 				animation.addByPrefix('blueholdend', 'blue hold end');
+				animation.addByPrefix('sunholdend', 'sun hold end');
 
 				animation.addByPrefix('purplehold', 'purple hold piece');
 				animation.addByPrefix('greenhold', 'green hold piece');
 				animation.addByPrefix('redhold', 'red hold piece');
 				animation.addByPrefix('bluehold', 'blue hold piece');
+				animation.addByPrefix('sunhold', 'sun hold piece');
 
 				setGraphicSize(Std.int(width * 0.7));
 				updateHitbox();
 				antialiasing = true;
 		}
-
-		switch (noteData)
+		
+		switch(noteType)
 		{
-			case 0:
-				x += swagWidth * 0;
-				animation.play('purpleScroll');
-			case 1:
-				x += swagWidth * 1;
-				animation.play('blueScroll');
-			case 2:
-				x += swagWidth * 2;
-				animation.play('greenScroll');
-			case 3:
-				x += swagWidth * 3;
-				animation.play('redScroll');
+			case 'sun':
+				x += swagWidth * noteData;
+				animation.play('sunScroll');
+			default:
+			switch (noteData)
+			{
+				case 0:
+					x += swagWidth * 0;
+					animation.play('purpleScroll');
+				case 1:
+					x += swagWidth * 1;
+					animation.play('blueScroll');
+				case 2:
+					x += swagWidth * 2;
+					animation.play('greenScroll');
+				case 3:
+					x += swagWidth * 3;
+					animation.play('redScroll');
+			}
 		}
 
 		// trace(prevNote);
@@ -137,19 +149,25 @@ class Note extends FlxSprite
 		{
 			noteScore * 0.2;
 			alpha = 0.6;
-
+			
 			x += width / 2;
-
-			switch (noteData)
+			
+			switch(noteType)
 			{
-				case 2:
-					animation.play('greenholdend');
-				case 3:
-					animation.play('redholdend');
-				case 1:
-					animation.play('blueholdend');
-				case 0:
-					animation.play('purpleholdend');
+				case 'sun':
+					animation.play('sunholdend');
+				default:
+				switch (noteData)
+				{
+					case 2:
+						animation.play('greenholdend');
+					case 3:
+						animation.play('redholdend');
+					case 1:
+						animation.play('blueholdend');
+					case 0:
+						animation.play('purpleholdend');
+				}
 			}
 
 			updateHitbox();
@@ -161,16 +179,22 @@ class Note extends FlxSprite
 
 			if (prevNote.isSustainNote)
 			{
-				switch (prevNote.noteData)
+				switch(noteType)
 				{
-					case 0:
-						prevNote.animation.play('purplehold');
-					case 1:
-						prevNote.animation.play('bluehold');
-					case 2:
-						prevNote.animation.play('greenhold');
-					case 3:
-						prevNote.animation.play('redhold');
+					case 'sun':
+						animation.play('sunhold');
+					default:
+					switch (prevNote.noteData)
+					{
+						case 0:
+							prevNote.animation.play('purplehold');
+						case 1:
+							prevNote.animation.play('bluehold');
+						case 2:
+							prevNote.animation.play('greenhold');
+						case 3:
+							prevNote.animation.play('redhold');
+					}
 				}
 
 				

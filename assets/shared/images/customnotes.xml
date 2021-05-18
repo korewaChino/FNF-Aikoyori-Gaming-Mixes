@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="customnotes.png">
+	<!-- Created with Adobe Animate version 21.0.3.38773 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="sun0000" x="12" y="12" width="168" height="172"/>
+	<SubTexture name="sun hold end0000" x="192" y="12" width="50" height="64"/>
+	<SubTexture name="sun hold piece0000" x="12" y="196" width="50" height="44"/>
+</TextureAtlas>
