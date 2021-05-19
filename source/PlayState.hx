@@ -3163,6 +3163,7 @@ class PlayState extends MusicBeatState
 
 	function noteMiss(direction:Int = 1, daNote:Note):Void
 	{
+		if(daNote!=null)
 		if(!(daNote.hittingNotRequired || daNote.missingIsRequired))
 		if (!boyfriend.stunned)
 		{
