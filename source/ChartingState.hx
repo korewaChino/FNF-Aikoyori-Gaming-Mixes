@@ -697,7 +697,9 @@ class ChartingState extends MusicBeatState
 					if(!claps.contains(note))
 					{
 						claps.push(note);
-						if(_song.notes[curSection].mustHitSection) FlxG.sound.play(Paths.sound('CLAP'));
+						if (note.noteType=="sun" || note.noteType=="sun-extra") FlxG.sound.play(Paths.sound('sunCollect'));
+						else if(note.noteType=="sun-bomb") {};
+						else if(_song.notes[curSection].mustHitSection) FlxG.sound.play(Paths.sound('CLAP'));
 						else FlxG.sound.play(Paths.sound('SNAP'));
 					}
 				});

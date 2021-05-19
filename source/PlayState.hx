@@ -2307,7 +2307,6 @@ class PlayState extends MusicBeatState
 							case 0:
 								dad.playAnim('singLEFT' + altAnim, true);
 						}
-	
 						#if windows
 						if (luaModchart != null)
 							luaModchart.executeState('playerTwoSing', [Math.abs(daNote.noteData), Conductor.songPosition]);
@@ -2362,6 +2361,7 @@ class PlayState extends MusicBeatState
 						}
 						else
 						{
+							if(!(daNote.hittingNotRequired || daNote.missingIsRequired))
 							health -= 0.075;
 							vocals.volume = 0;
 							if (theFunne)
@@ -2608,19 +2608,50 @@ class PlayState extends MusicBeatState
 				totalNotesHit += wife;
 
 			var daRating = daNote.rating;
-
+			
 			switch(daRating)
 			{
 				case 'shit':
-					score = -300;
-					combo = 0;
-					misses++;
-					health -= 0.2;
-					ss = false;
-					shits++;
-					if (FlxG.save.data.accuracyMod == 0)
-						totalNotesHit += 0.25;
+				if(!(daNote.hittingNotRequired || daNote.missingIsRequired))
+					{
+
+						score = -300;
+						combo = 0;
+						misses++;
+						health -= 0.2;
+						ss = false;
+						shits++;
+						if (FlxG.save.data.accuracyMod == 0)
+							totalNotesHit += 0.25;
+					}
+					else
+					{
+						daRating == "dontshow";
+					}
 				case 'bad':
+				if (daNote.missingIsRequired)
+					{
+						playMissAnim(daNote.noteData);
+					daRating = 'bad';
+					score = -300;
+					health -= 0.03;
+					ss = false;
+					noteMiss(daNote.noteData,daNote);
+					bads++;
+					if (FlxG.save.data.accuracyMod == 0)
+						totalNotesHit += 0.50;
+					}
+				else if(!daNote.hittingNotRequired)
+					{
+						playMissAnim(daNote.noteData);
+					daRating = 'bad';
+					score = 10;
+					bads++;
+					if (FlxG.save.data.accuracyMod == 0)
+						totalNotesHit += 0.50;
+					}
+				else
+					{
 					daRating = 'bad';
 					score = 0;
 					health -= 0.06;
@@ -2628,26 +2659,65 @@ class PlayState extends MusicBeatState
 					bads++;
 					if (FlxG.save.data.accuracyMod == 0)
 						totalNotesHit += 0.50;
+					}
 				case 'good':
+					
+				if (daNote.missingIsRequired)
+					{
+						playMissAnim(daNote.noteData);
+					daRating = 'bad';
+					combo = 0;
+					score = -700;
+					health -= 0.1;
+					ss = false;
+					misses++;
+					bads++;
+					noteMiss(daNote.noteData,daNote);
+					if (FlxG.save.data.accuracyMod == 0)
+						totalNotesHit += 0.25;
+					}
+				else 
+					{
 					daRating = 'good';
 					score = 200;
+					if(daNote.hittingNotRequired)
 					ss = false;
+					misses++;
 					goods++;
 					if (health < 2)
 						health += 0.04;
 					if (FlxG.save.data.accuracyMod == 0)
 						totalNotesHit += 0.75;
+				}
 				case 'sick':
+					
+				if (daNote.missingIsRequired)
+					{
+						playMissAnim(daNote.noteData);
+						combo = 0;
+					daRating = 'shit';
+					score = -1500;
+					health -= 0.3;
+					ss = false;
+					misses++;
+					shits++;
+					noteMiss(daNote.noteData,daNote);
+					if (FlxG.save.data.accuracyMod == 0)
+						totalNotesHit += 0;
+					}
+				else 
+					{
 					if (health < 2)
 						health += 0.1;
 					if (FlxG.save.data.accuracyMod == 0)
 						totalNotesHit += 1;
 					sicks++;
+					}
 			}
 
 			// trace('Wife accuracy loss: ' + wife + ' | Rating: ' + daRating + ' | Score: ' + score + ' | Weight: ' + (1 - wife));
 
-			if (daRating != 'shit' || daRating != 'bad')
+			if (true)
 				{
 	
 	
@@ -2670,7 +2740,7 @@ class PlayState extends MusicBeatState
 				pixelShitPart1 = 'weeb/pixelUI/';
 				pixelShitPart2 = '-pixel';
 			}
-	
+			if(daRating == 'dontshow')
 			rating.loadGraphic(Paths.image(pixelShitPart1 + daRating + pixelShitPart2));
 			rating.screenCenter();
 			rating.y -= 50;
@@ -2770,6 +2840,7 @@ class PlayState extends MusicBeatState
 	
 			currentTimingShown.cameras = [camHUD];
 			comboSpr.cameras = [camHUD];
+			if(daRating == 'dontshow')
 			rating.cameras = [camHUD];
 
 			var seperatedScore:Array<Int> = [];
@@ -2858,7 +2929,25 @@ class PlayState extends MusicBeatState
 			curSection += 1;
 			}
 		}
+	function playMissAnim(direction)
+		{
+			
+			FlxG.sound.play(Paths.soundRandom('missnote', 1, 3), FlxG.random.float(0.1, 0.2));
+			// FlxG.sound.play(Paths.sound('missnote1'), 1, false);
+			// FlxG.log.add('played imss note');
 
+			switch (direction)
+			{
+				case 0:
+					boyfriend.playAnim('singLEFTmiss', true);
+				case 1:
+					boyfriend.playAnim('singDOWNmiss', true);
+				case 2:
+					boyfriend.playAnim('singUPmiss', true);
+				case 3:
+					boyfriend.playAnim('singRIGHTmiss', true);
+			}
+		}
 	public function NearlyEquals(value1:Float, value2:Float, unimportantDifference:Float = 10):Bool
 		{
 			return Math.abs(FlxMath.roundDecimal(value1, 1) - FlxMath.roundDecimal(value2, 1)) < unimportantDifference;
@@ -3055,6 +3144,7 @@ class PlayState extends MusicBeatState
 
 	function noteMiss(direction:Int = 1, daNote:Note):Void
 	{
+		if(!(daNote.hittingNotRequired || daNote.missingIsRequired))
 		if (!boyfriend.stunned)
 		{
 			health -= 0.04;
@@ -3205,7 +3295,15 @@ class PlayState extends MusicBeatState
 				var noteDiff:Float = Math.abs(note.strumTime - Conductor.songPosition);
 
 				note.rating = Ratings.CalculateRating(noteDiff);
+						
+				switch(note.noteType)
+				{
+					case 'sun':
+						FlxG.sound.play(Paths.sound('sunCollect'));
+					case 'sun-extra':
+						FlxG.sound.play(Paths.sound('sunCollect'));
 
+				}
 				// add newest note to front of notesHitArray
 				// the oldest notes are at the end and are removed first
 				if (!note.isSustainNote)
@@ -3216,7 +3314,7 @@ class PlayState extends MusicBeatState
 
 				if (mashViolations < 0)
 					mashViolations = 0;
-
+				
 				if (!note.wasGoodHit)
 				{
 					if (!note.isSustainNote)
@@ -3256,7 +3354,6 @@ class PlayState extends MusicBeatState
 							spr.animation.play('confirm', true);
 						}
 					});
-					
 					note.wasGoodHit = true;
 					vocals.volume = 1;
 		

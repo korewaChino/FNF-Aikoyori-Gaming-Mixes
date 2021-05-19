@@ -18,6 +18,7 @@ class Note extends FlxSprite
 	public var strumTime:Float = 0;
 
 	public var mustPress:Bool = false;
+	public var mustNotPress:Bool = true;
 	public var noteData:Int = 0;
 	public var canBeHit:Bool = false;
 	public var tooLate:Bool = false;
@@ -25,7 +26,8 @@ class Note extends FlxSprite
 	public var prevNote:Note;
 	public var modifiedByLua:Bool = false;
 	public var sustainLength:Float = 0;
-	public var _currentSustainDistance:Float = 0;
+	public var hittingNotRequired:Bool = false;
+	public var missingIsRequired:Bool = false;
 	public var noteType:String = "normal";
 	public var isSustainNote:Bool = false;
 
@@ -48,7 +50,6 @@ class Note extends FlxSprite
 
 		this.prevNote = prevNote;
 		isSustainNote = sustainNote;
-
 		x += 50;
 		// MAKE SURE ITS DEFINITELY OFF SCREEN?
 		y -= 2000;
@@ -96,18 +97,24 @@ class Note extends FlxSprite
 				animation.addByPrefix('blueScroll', 'blue0');
 				animation.addByPrefix('purpleScroll', 'purple0');
 				animation.addByPrefix('sunScroll', 'sun0');
+				animation.addByPrefix('sunExtraScroll', 'sun-extra0');
+				animation.addByPrefix('sunBombScroll', 'sun-bomb0');
 
 				animation.addByPrefix('purpleholdend', 'pruple end hold');
 				animation.addByPrefix('greenholdend', 'green hold end');
 				animation.addByPrefix('redholdend', 'red hold end');
 				animation.addByPrefix('blueholdend', 'blue hold end');
 				animation.addByPrefix('sunholdend', 'sun hold end');
+				animation.addByPrefix('sunextraholdend', 'sun-extra hold end');
+				animation.addByPrefix('sunbombholdend', 'sun-bomb hold end');
 
 				animation.addByPrefix('purplehold', 'purple hold piece');
 				animation.addByPrefix('greenhold', 'green hold piece');
 				animation.addByPrefix('redhold', 'red hold piece');
 				animation.addByPrefix('bluehold', 'blue hold piece');
 				animation.addByPrefix('sunhold', 'sun hold piece');
+				animation.addByPrefix('sunextrahold', 'sun-extra hold piece');
+				animation.addByPrefix('sunbombhold', 'sun-bomb hold piece');
 
 				setGraphicSize(Std.int(width * 0.7));
 				updateHitbox();
@@ -119,6 +126,14 @@ class Note extends FlxSprite
 			case 'sun':
 				x += swagWidth * noteData;
 				animation.play('sunScroll');
+			case 'sun-extra':
+				x += swagWidth * noteData;
+				animation.play('sunExtraScroll');
+				hittingNotRequired = true;
+			case 'sun-bomb':
+				x += swagWidth * noteData;
+				animation.play('sunBombScroll');
+				missingIsRequired = true;
 			default:
 			switch (noteData)
 			{
@@ -156,6 +171,10 @@ class Note extends FlxSprite
 			{
 				case 'sun':
 					animation.play('sunholdend');
+				case 'sun-extra':
+					animation.play('sunextraholdend');
+				case 'sun-bomb':
+					animation.play('sunbombholdend');
 				default:
 				switch (noteData)
 				{
@@ -183,6 +202,10 @@ class Note extends FlxSprite
 				{
 					case 'sun':
 						animation.play('sunhold');
+					case 'sun-extra':
+						animation.play('sunextrahold');
+					case 'sun-bomb':
+						animation.play('sunbombhold');
 					default:
 					switch (prevNote.noteData)
 					{

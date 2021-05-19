@@ -1,2 +1,4 @@
 normal
 sun
+sun-extra
+sun-bomb
