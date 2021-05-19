@@ -2362,10 +2362,13 @@ class PlayState extends MusicBeatState
 						else
 						{
 							if(!(daNote.hittingNotRequired || daNote.missingIsRequired))
-							health -= 0.075;
-							vocals.volume = 0;
-							if (theFunne)
-								noteMiss(daNote.noteData, daNote);
+							{
+
+								health -= 0.075;
+								vocals.volume = 0;
+								if (theFunne)
+									noteMiss(daNote.noteData, daNote);
+							}
 						}
 	
 						daNote.active = false;
@@ -2634,7 +2637,8 @@ class PlayState extends MusicBeatState
 						playMissAnim(daNote.noteData);
 					daRating = 'bad';
 					score = -300;
-					health -= 0.03;
+					combo = 0;
+					health -= 0.2 ;
 					ss = false;
 					noteMiss(daNote.noteData,daNote);
 					bads++;
@@ -2668,7 +2672,7 @@ class PlayState extends MusicBeatState
 					daRating = 'bad';
 					combo = 0;
 					score = -700;
-					health -= 0.1;
+					health -= 0.2;
 					ss = false;
 					misses++;
 					bads++;
@@ -2682,7 +2686,6 @@ class PlayState extends MusicBeatState
 					score = 200;
 					if(daNote.hittingNotRequired)
 					ss = false;
-					misses++;
 					goods++;
 					if (health < 2)
 						health += 0.04;
@@ -2697,7 +2700,7 @@ class PlayState extends MusicBeatState
 						combo = 0;
 					daRating = 'shit';
 					score = -1500;
-					health -= 0.3;
+					health -= 0.2;
 					ss = false;
 					misses++;
 					shits++;
