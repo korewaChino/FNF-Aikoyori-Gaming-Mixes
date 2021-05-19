@@ -205,6 +205,9 @@ class PlayState extends MusicBeatState
 	public static var songOffset:Float = 0;
 	// BotPlay text
 	private var botPlayState:FlxText;
+	private var sunAmountText:FlxText;
+
+	private var sunAmount:Int = 0;
 	// Replay shit
 	private var saveNotes:Array<Float> = [];
 
@@ -976,8 +979,15 @@ class PlayState extends MusicBeatState
 		botPlayState = new FlxText(healthBarBG.x + healthBarBG.width / 2 - 75, healthBarBG.y + (FlxG.save.data.downscroll ? 100 : -100), 0, "BOTPLAY", 20);
 		botPlayState.setFormat(Paths.font("vcr.ttf"), 42, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE,FlxColor.BLACK);
 		botPlayState.scrollFactor.set();
+
+		sunAmountText = new FlxText(healthBarBG.x + healthBarBG.width / 2 - 75, healthBarBG.y + (FlxG.save.data.downscroll ? 160 : -160), 0, sunAmount+" SUNS", 60);
+		sunAmountText.setFormat(Paths.font("contb.ttf"), 60, FlxColor.WHITE, RIGHT);
+		sunAmountText.setBorderStyle(FlxTextBorderStyle.OUTLINE,FlxColor.BLACK,10);
+		sunAmountText.scrollFactor.set();
+		sunAmountText.updateHitbox();
 		
 		if(FlxG.save.data.botplay && !loadRep) add(botPlayState);
+		add(sunAmountText);
 
 		iconP1 = new HealthIcon(SONG.player1, true);
 		iconP1.y = healthBar.y - (iconP1.height / 2);
@@ -1806,6 +1816,8 @@ class PlayState extends MusicBeatState
 		super.update(elapsed);
 
 		scoreTxt.text = Ratings.CalculateRanking(songScore,songScoreDef,nps,maxNPS,accuracy);
+		sunAmountText.text = sunAmount+" SUNS";
+		sunAmountText.updateHitbox();
 		if (FlxG.keys.justPressed.ENTER && startedCountdown && canPause)
 		{
 			persistentUpdate = false;
@@ -2651,6 +2663,7 @@ class PlayState extends MusicBeatState
 					daRating = 'bad';
 					score = 10;
 					bads++;
+					noteDoSomething(daNote);
 					if (FlxG.save.data.accuracyMod == 0)
 						totalNotesHit += 0.50;
 					}
@@ -2661,6 +2674,7 @@ class PlayState extends MusicBeatState
 					health -= 0.06;
 					ss = false;
 					bads++;
+					noteDoSomething(daNote);
 					if (FlxG.save.data.accuracyMod == 0)
 						totalNotesHit += 0.50;
 					}
@@ -2684,6 +2698,7 @@ class PlayState extends MusicBeatState
 					{
 					daRating = 'good';
 					score = 200;
+					noteDoSomething(daNote);
 					if(daNote.hittingNotRequired)
 					ss = false;
 					goods++;
@@ -2710,6 +2725,7 @@ class PlayState extends MusicBeatState
 					}
 				else 
 					{
+					noteDoSomething(daNote);
 					if (health < 2)
 						health += 0.1;
 					if (FlxG.save.data.accuracyMod == 0)
@@ -2883,7 +2899,7 @@ class PlayState extends MusicBeatState
 				numScore.velocity.y -= FlxG.random.int(140, 160);
 				numScore.velocity.x = FlxG.random.float(-5, 5);
 	
-				if (combo >= 10 || combo == 0)
+				//if (combo >= 10 || combo == 0)
 					add(numScore);
 	
 				FlxTween.tween(numScore, {alpha: 0}, 0.2, {
@@ -3191,7 +3207,18 @@ class PlayState extends MusicBeatState
 			updateAccuracy();
 		}
 	}
-
+	function noteDoSomething(note:Note)
+	{
+		if(note.noteType == "sun")
+			{
+				sunAmount += 50;
+			}
+		if(note.noteType == "sun-extra")
+			{
+				sunAmount += 25;
+			}
+			
+	}
 	/*function badNoteCheck()
 		{
 			// just double pasting this shit cuz fuk u
