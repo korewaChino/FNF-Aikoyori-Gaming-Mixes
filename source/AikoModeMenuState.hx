@@ -58,7 +58,7 @@ class AikoModeMenuState extends MusicBeatState
 	{
 		#if windows
 		// Updating Discord Rich Presence
-		DiscordClient.changePresence("In the Story Mode Menu", null);
+		DiscordClient.changePresence("In Aiko's Mode Menu", null);
 		#end
 
 		transIn = FlxTransitionableState.defaultTransIn;
