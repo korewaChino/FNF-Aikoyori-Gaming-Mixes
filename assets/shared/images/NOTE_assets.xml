@@ -45,12 +45,18 @@
 	<SubTexture name="sun0000" x="1030" y="502" width="168" height="172"/>
 	<SubTexture name="sun hold end0000" x="1210" y="502" width="50" height="64"/>
 	<SubTexture name="sun hold piece0000" x="1272" y="502" width="50" height="44"/>
-	<SubTexture name="up confirm0000" x="1334" y="502" width="236" height="232"/>
-	<SubTexture name="up confirm0001" x="1582" y="502" width="236" height="232"/>
-	<SubTexture name="up confirm0002" x="12" y="746" width="214" height="211" frameX="-11" frameY="-10" frameWidth="236" frameHeight="232"/>
-	<SubTexture name="up confirm0003" x="12" y="746" width="214" height="211" frameX="-11" frameY="-10" frameWidth="236" frameHeight="232"/>
-	<SubTexture name="up press0000" x="238" y="746" width="144" height="141" frameX="-5" frameY="-4" frameWidth="153" frameHeight="150"/>
-	<SubTexture name="up press0001" x="238" y="746" width="144" height="141" frameX="-5" frameY="-4" frameWidth="153" frameHeight="150"/>
-	<SubTexture name="up press0002" x="394" y="746" width="153" height="150"/>
-	<SubTexture name="up press0003" x="394" y="746" width="153" height="150"/>
+	<SubTexture name="sun-bomb0000" x="1334" y="502" width="168" height="172"/>
+	<SubTexture name="sun-bomb hold end0000" x="1514" y="502" width="50" height="64"/>
+	<SubTexture name="sun-bomb hold piece0000" x="1576" y="502" width="50" height="44"/>
+	<SubTexture name="sun-extra0000" x="1638" y="502" width="168" height="172"/>
+	<SubTexture name="sun-extra hold end0000" x="1818" y="502" width="50" height="64"/>
+	<SubTexture name="sun-extra hold piece0000" x="1880" y="502" width="50" height="44"/>
+	<SubTexture name="up confirm0000" x="12" y="744" width="236" height="232"/>
+	<SubTexture name="up confirm0001" x="260" y="744" width="236" height="232"/>
+	<SubTexture name="up confirm0002" x="508" y="744" width="214" height="211" frameX="-11" frameY="-10" frameWidth="236" frameHeight="232"/>
+	<SubTexture name="up confirm0003" x="508" y="744" width="214" height="211" frameX="-11" frameY="-10" frameWidth="236" frameHeight="232"/>
+	<SubTexture name="up press0000" x="734" y="744" width="144" height="141" frameX="-5" frameY="-4" frameWidth="153" frameHeight="150"/>
+	<SubTexture name="up press0001" x="734" y="744" width="144" height="141" frameX="-5" frameY="-4" frameWidth="153" frameHeight="150"/>
+	<SubTexture name="up press0002" x="890" y="744" width="153" height="150"/>
+	<SubTexture name="up press0003" x="890" y="744" width="153" height="150"/>
 </TextureAtlas>
