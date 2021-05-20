@@ -17,7 +17,7 @@ class Note extends FlxSprite
 {
 	public var strumTime:Float = 0;
 
-	public var mustPress:Bool = false;
+	public var mustPress:Bool = true;
 	public var mustNotPress:Bool = true;
 	public var noteData:Int = 0;
 	public var canBeHit:Bool = false;
@@ -134,6 +134,8 @@ class Note extends FlxSprite
 				x += swagWidth * noteData;
 				animation.play('sunBombScroll');
 				missingIsRequired = true;
+				mustPress=false;
+				
 			default:
 			switch (noteData)
 			{

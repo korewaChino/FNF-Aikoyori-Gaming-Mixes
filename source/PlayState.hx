@@ -980,12 +980,20 @@ class PlayState extends MusicBeatState
 		botPlayState.setFormat(Paths.font("vcr.ttf"), 42, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE,FlxColor.BLACK);
 		botPlayState.scrollFactor.set();
 
-		sunAmountText = new FlxText(healthBarBG.x + healthBarBG.width / 2 - 75, healthBarBG.y + (FlxG.save.data.downscroll ? 160 : -160), 0, sunAmount+" SUNS", 60);
-		sunAmountText.setFormat(Paths.font("contb.ttf"), 60, FlxColor.WHITE, RIGHT);
-		sunAmountText.setBorderStyle(FlxTextBorderStyle.OUTLINE,FlxColor.BLACK,10);
+		sunAmountText = new FlxText(1320, 800, 0, sunAmount+"", 60);
+		sunAmountText.setFormat(Paths.font("contb.ttf"), 60, 0x311902, JUSTIFY);
 		sunAmountText.scrollFactor.set();
 		sunAmountText.updateHitbox();
 		
+
+		var extraUI = new FlxSprite(1240,582);
+
+		extraUI.frames = Paths.getSparrowAtlas('extra-ui-elements');
+		extraUI.animation.addByPrefix('sunbankbg', 'sunBank', 24);
+		extraUI.scrollFactor.set();
+		sunAmountText.updateHitbox();
+		add(extraUI);
+
 		if(FlxG.save.data.botplay && !loadRep) add(botPlayState);
 		add(sunAmountText);
 
@@ -1816,7 +1824,7 @@ class PlayState extends MusicBeatState
 		super.update(elapsed);
 
 		scoreTxt.text = Ratings.CalculateRanking(songScore,songScoreDef,nps,maxNPS,accuracy);
-		sunAmountText.text = sunAmount+" SUNS";
+		sunAmountText.text = sunAmount+"";
 		sunAmountText.updateHitbox();
 		if (FlxG.keys.justPressed.ENTER && startedCountdown && canPause)
 		{
@@ -3007,7 +3015,7 @@ class PlayState extends MusicBeatState
 					notes.forEachAlive(function(daNote:Note)
 					{
 						if (daNote.isSustainNote && daNote.canBeHit && daNote.mustPress && holdArray[daNote.noteData])
-							goodNoteHit(daNote);
+								goodNoteHit(daNote);
 					});
 				}
 		 
@@ -3069,6 +3077,7 @@ class PlayState extends MusicBeatState
 					}
 
 					if (perfectMode)
+						if(possibleNotes[0].mustPress)
 						goodNoteHit(possibleNotes[0]);
 					else if (possibleNotes.length > 0 && !dontCheck)
 					{
@@ -3130,7 +3139,8 @@ class PlayState extends MusicBeatState
 									boyfriend.holdTimer = daNote.sustainLength;
 								}
 							}else {
-								goodNoteHit(daNote);
+								if(!daNote.missingIsRequired)
+									goodNoteHit(daNote);
 								boyfriend.holdTimer = daNote.sustainLength;
 							}
 						}
