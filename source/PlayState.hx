@@ -3077,7 +3077,6 @@ class PlayState extends MusicBeatState
 					}
 
 					if (perfectMode)
-						if(possibleNotes[0].mustPress)
 						goodNoteHit(possibleNotes[0]);
 					else if (possibleNotes.length > 0 && !dontCheck)
 					{
@@ -3139,6 +3138,7 @@ class PlayState extends MusicBeatState
 									boyfriend.holdTimer = daNote.sustainLength;
 								}
 							}else {
+								if(!daNote.missingIsRequired)
 									goodNoteHit(daNote);
 								boyfriend.holdTimer = daNote.sustainLength;
 							}
