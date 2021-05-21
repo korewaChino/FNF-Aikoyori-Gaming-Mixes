@@ -312,13 +312,13 @@ class ChartingState extends MusicBeatState
 		noteStyleDropDown.selectedLabel = _song.noteStyle;
 		var noteStyleLabel = new FlxText(10,280,64,'Note Skin');
 
-		var gimmicksDropDown = new FlxUIDropDownMenu(140, 300, FlxUIDropDownMenu.makeStrIdLabelArray(noteStyles, true), function(gimmick:String)
+		var gimmicksDropDown = new FlxUIDropDownMenu(140, 300, FlxUIDropDownMenu.makeStrIdLabelArray(gimmicksList, true), function(gimmick:String)
 			{
 				_song.gimmick = gimmicksList[Std.parseInt(gimmick)];
 			});
 
 		gimmicksDropDown.selectedLabel = _song.gimmick;
-		var gimmicksLabel = new FlxText(140,280,64,'Stage Gimmick');
+		var gimmicksLabel = new FlxText(140,280,120,'Stage Gimmick');
 
 
 		var tab_group_song = new FlxUI(null, UI_box);

@@ -521,9 +521,9 @@ class Character extends FlxSprite
 				animation.addByPrefix('singLEFT', 'zomboss-singLeft', 24);
 
 				addOffset('idle',100,0);
-				addOffset("singUP", 122, 43);
-				addOffset("singRIGHT", 100, 2);
-				addOffset("singLEFT", 243, 38);
+				addOffset("singUP", 113, 46);
+				addOffset("singRIGHT", 100, -4);
+				addOffset("singLEFT", 254, 35);
 				addOffset("singDOWN", 100,-1);
 	
 		}

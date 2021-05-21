@@ -980,8 +980,8 @@ class PlayState extends MusicBeatState
 		botPlayState.setFormat(Paths.font("vcr.ttf"), 42, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE,FlxColor.BLACK);
 		botPlayState.scrollFactor.set();
 
-		sunAmountText = new FlxText(1320, 800, 0, sunAmount+"", 60);
-		sunAmountText.setFormat(Paths.font("contb.ttf"), 60, 0x311902, JUSTIFY);
+		sunAmountText = new FlxText(1300, 800, 160, sunAmount+"", 60);
+		sunAmountText.setFormat(Paths.font("contb.ttf"), 60, 0x311902, CENTER);
 		sunAmountText.scrollFactor.set();
 		sunAmountText.updateHitbox();
 		
