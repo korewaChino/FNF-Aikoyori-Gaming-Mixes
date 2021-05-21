@@ -3139,7 +3139,6 @@ class PlayState extends MusicBeatState
 									boyfriend.holdTimer = daNote.sustainLength;
 								}
 							}else {
-								if(!daNote.missingIsRequired)
 									goodNoteHit(daNote);
 								boyfriend.holdTimer = daNote.sustainLength;
 							}

@@ -109,6 +109,7 @@ class ChartingState extends MusicBeatState
 				gfVersion: 'gf',
 				noteStyle: 'normal',
 				stage: 'stage',
+				gimmick: 'none',
 				speed: 1,
 				validScore: false
 			};
@@ -269,6 +270,7 @@ class ChartingState extends MusicBeatState
 		var gfVersions:Array<String> = CoolUtil.coolTextFile(Paths.txt('gfVersionList'));
 		var stages:Array<String> = CoolUtil.coolTextFile(Paths.txt('stageList'));
 		var noteStyles:Array<String> = CoolUtil.coolTextFile(Paths.txt('noteStyleList'));
+		var gimmicksList:Array<String> = CoolUtil.coolTextFile(Paths.txt('gimmickList'));
 
 		var player1DropDown = new FlxUIDropDownMenu(10, 100, FlxUIDropDownMenu.makeStrIdLabelArray(characters, true), function(character:String)
 		{
@@ -305,10 +307,19 @@ class ChartingState extends MusicBeatState
 		var noteStyleDropDown = new FlxUIDropDownMenu(10, 300, FlxUIDropDownMenu.makeStrIdLabelArray(noteStyles, true), function(noteStyle:String)
 			{
 				_song.noteStyle = noteStyles[Std.parseInt(noteStyle)];
-			});
+			});		
+			
 		noteStyleDropDown.selectedLabel = _song.noteStyle;
-
 		var noteStyleLabel = new FlxText(10,280,64,'Note Skin');
+
+		var gimmicksDropDown = new FlxUIDropDownMenu(140, 300, FlxUIDropDownMenu.makeStrIdLabelArray(noteStyles, true), function(gimmick:String)
+			{
+				_song.gimmick = gimmicksList[Std.parseInt(gimmick)];
+			});
+
+		gimmicksDropDown.selectedLabel = _song.gimmick;
+		var gimmicksLabel = new FlxText(140,280,64,'Stage Gimmick');
+
 
 		var tab_group_song = new FlxUI(null, UI_box);
 		tab_group_song.name = "Song";
@@ -336,11 +347,13 @@ class ChartingState extends MusicBeatState
 		tab_group_assets.add(gfVersionDropDown);
 		tab_group_assets.add(gfVersionLabel);
 		tab_group_assets.add(stageDropDown);
+		tab_group_assets.add(gimmicksDropDown);
 		tab_group_assets.add(stageLabel);
 		tab_group_assets.add(player1DropDown);
 		tab_group_assets.add(player2DropDown);
 		tab_group_assets.add(player1Label);
 		tab_group_assets.add(player2Label);
+		tab_group_assets.add(gimmicksLabel);
 
 		UI_box.addGroup(tab_group_song);
 		UI_box.addGroup(tab_group_assets);

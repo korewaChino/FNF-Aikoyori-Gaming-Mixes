@@ -18,20 +18,20 @@
 	<SubTexture name="zomboss-bop0013" x="3292" y="1018" width="809" height="994" frameX="0" frameY="-1" frameWidth="809" frameHeight="995"/>
 	<SubTexture name="zomboss-bop0014" x="4113" y="1018" width="809" height="994" frameX="0" frameY="-1" frameWidth="809" frameHeight="995"/>
 	<SubTexture name="zomboss-bop0015" x="12" y="12" width="809" height="994" frameX="0" frameY="-1" frameWidth="809" frameHeight="995"/>
-	<SubTexture name="zomboss-singDown0000" x="4934" y="1018" width="787" height="994"/>
-	<SubTexture name="zomboss-singDown0001" x="5733" y="1018" width="787" height="994"/>
-	<SubTexture name="zomboss-singDown0002" x="6532" y="1018" width="787" height="994"/>
-	<SubTexture name="zomboss-singDown0003" x="7331" y="1018" width="787" height="994"/>
-	<SubTexture name="zomboss-singLeft0000" x="12" y="2025" width="838" height="1027" frameX="-9" frameY="-6" frameWidth="847" frameHeight="1033"/>
-	<SubTexture name="zomboss-singLeft0001" x="862" y="2025" width="840" height="1029" frameX="-7" frameY="-4" frameWidth="847" frameHeight="1033"/>
-	<SubTexture name="zomboss-singLeft0002" x="1714" y="2025" width="844" height="1029" frameX="-3" frameY="-4" frameWidth="847" frameHeight="1033"/>
-	<SubTexture name="zomboss-singLeft0003" x="2570" y="2025" width="844" height="1026" frameX="-3" frameY="-7" frameWidth="847" frameHeight="1033"/>
-	<SubTexture name="zomboss-singRight0000" x="3426" y="2025" width="928" height="994" frameX="0" frameY="-3" frameWidth="933" frameHeight="997"/>
-	<SubTexture name="zomboss-singRight0001" x="4366" y="2025" width="928" height="993" frameX="0" frameY="-4" frameWidth="933" frameHeight="997"/>
-	<SubTexture name="zomboss-singRight0002" x="5306" y="2025" width="933" height="993" frameX="0" frameY="-4" frameWidth="933" frameHeight="997"/>
-	<SubTexture name="zomboss-singRight0003" x="5306" y="2025" width="933" height="993" frameX="0" frameY="-4" frameWidth="933" frameHeight="997"/>
-	<SubTexture name="zomboss-singUp0000" x="6251" y="2025" width="726" height="1031" frameX="0" frameY="-7" frameWidth="726" frameHeight="1038"/>
-	<SubTexture name="zomboss-singUp0001" x="6989" y="2025" width="726" height="1037" frameX="0" frameY="-1" frameWidth="726" frameHeight="1038"/>
-	<SubTexture name="zomboss-singUp0002" x="12" y="3074" width="726" height="1038"/>
-	<SubTexture name="zomboss-singUp0003" x="750" y="3074" width="726" height="1038"/>
+	<SubTexture name="zomboss-singDown0000" x="4934" y="1018" width="784" height="994"/>
+	<SubTexture name="zomboss-singDown0001" x="5730" y="1018" width="784" height="994"/>
+	<SubTexture name="zomboss-singDown0002" x="6526" y="1018" width="784" height="994"/>
+	<SubTexture name="zomboss-singDown0003" x="7322" y="1018" width="784" height="994"/>
+	<SubTexture name="zomboss-singLeft0000" x="12" y="2025" width="849" height="1024" frameX="-9" frameY="-6" frameWidth="858" frameHeight="1030"/>
+	<SubTexture name="zomboss-singLeft0001" x="873" y="2025" width="851" height="1026" frameX="-7" frameY="-4" frameWidth="858" frameHeight="1030"/>
+	<SubTexture name="zomboss-singLeft0002" x="1736" y="2025" width="854" height="1026" frameX="-4" frameY="-4" frameWidth="858" frameHeight="1030"/>
+	<SubTexture name="zomboss-singLeft0003" x="2602" y="2025" width="854" height="1023" frameX="-4" frameY="-7" frameWidth="858" frameHeight="1030"/>
+	<SubTexture name="zomboss-singRight0000" x="3468" y="2025" width="935" height="988" frameX="0" frameY="-3" frameWidth="940" frameHeight="991"/>
+	<SubTexture name="zomboss-singRight0001" x="4415" y="2025" width="935" height="987" frameX="0" frameY="-4" frameWidth="940" frameHeight="991"/>
+	<SubTexture name="zomboss-singRight0002" x="5362" y="2025" width="940" height="987" frameX="0" frameY="-4" frameWidth="940" frameHeight="991"/>
+	<SubTexture name="zomboss-singRight0003" x="6314" y="2025" width="940" height="987" frameX="0" frameY="-4" frameWidth="940" frameHeight="991"/>
+	<SubTexture name="zomboss-singUp0000" x="7266" y="2025" width="717" height="1033" frameX="0" frameY="-8" frameWidth="717" frameHeight="1041"/>
+	<SubTexture name="zomboss-singUp0001" x="12" y="3070" width="717" height="1040" frameX="0" frameY="-1" frameWidth="717" frameHeight="1041"/>
+	<SubTexture name="zomboss-singUp0002" x="741" y="3070" width="717" height="1041"/>
+	<SubTexture name="zomboss-singUp0003" x="1470" y="3070" width="717" height="1041"/>
 </TextureAtlas>
