@@ -2805,7 +2805,6 @@ class PlayState extends MusicBeatState
 				pixelShitPart1 = 'weeb/pixelUI/';
 				pixelShitPart2 = '-pixel';
 			}
-			if(daRating == 'dontshow')
 			rating.loadGraphic(Paths.image(pixelShitPart1 + daRating + pixelShitPart2));
 			rating.screenCenter();
 			rating.y -= 50;
@@ -2884,7 +2883,9 @@ class PlayState extends MusicBeatState
 	
 			comboSpr.velocity.x += FlxG.random.int(1, 10);
 			currentTimingShown.velocity.x += comboSpr.velocity.x;
-			if(!FlxG.save.data.botplay) add(rating);
+			if(!FlxG.save.data.botplay) 
+				if(daRating != 'dontshow') 
+					add(rating);
 	
 			if (!curStage.startsWith('school'))
 			{
