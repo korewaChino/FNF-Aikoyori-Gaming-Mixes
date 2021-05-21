@@ -1,6 +1,6 @@
-![Kade Engine logo](https://raw.githubusercontent.com/Aikoyori/FNF-Aiko-Video-Game-Mix/master/AikoGamingMixesLogo.png)
+![Kade Engine logo](https://raw.githubusercontent.com/Aikoyori/FNF-Aikoyori-Gaming-Mixes/master/AikoGamingMixesLogo.png)
 
-![GitHub commits since latest release (by date)](https://img.shields.io/github/commits-since/Aikoyori/FNF-Aiko-Video-Game-Mix/latest) ![GitHub repo size](https://img.shields.io/github/repo-size/Aikoyori/FNF-Aiko-Video-Game-Mix) ![Lines of code](https://img.shields.io/tokei/lines/github/Aikoyori/FNF-Aiko-Video-Game-Mix) ![Supported platforms](https://img.shields.io/badge/supported%20platforms-windows%2C%20macOS%2C%20linux%2C%20html5-blue) ![GitHub all releases](https://img.shields.io/github/downloads/Aikoyori/FNF-Aiko-Video-Game-Mix/total) ![GitHub](https://img.shields.io/github/license/Aikoyori/FNF-Aiko-Video-Game-Mix) ![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/Aikoyori/FNF-Aiko-Video-Game-Mix?include_prereleases&label=latest%20version) 
+![GitHub commits since latest release (by date)](https://img.shields.io/github/commits-since/Aikoyori/FNF-Aikoyori-Gaming-Mixes/latest) ![GitHub repo size](https://img.shields.io/github/repo-size/Aikoyori/FNF-Aikoyori-Gaming-Mixes) ![Lines of code](https://img.shields.io/tokei/lines/github/Aikoyori/FNF-Aikoyori-Gaming-Mixes) ![Supported platforms](https://img.shields.io/badge/supported%20platforms-windows%2C%20macOS%2C%20linux%2C%20html5-blue) ![GitHub all releases](https://img.shields.io/github/downloads/Aikoyori/FNF-Aikoyori-Gaming-Mixes/total) ![GitHub](https://img.shields.io/github/license/Aikoyori/FNF-Aikoyori-Gaming-Mixes) ![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/Aikoyori/FNF-Aikoyori-Gaming-Mixes?include_prereleases&label=latest%20version) 
 
 # Friday Night Funkin': Aikoyori's Gaming Mixes
 ## Friday Night Funkin'
@@ -17,7 +17,7 @@ Links: **[GameBanana mod page](https://gamebanana.com/gamefiles/16761) ⋅ [play
 **REMEMBER**: This is a **mod**. This is not the vanilla game and should be treated as a **modification**. This is not and probably will never be official, so don't get confused.
 
 ## FNF Aikoyori's Gaming Mixes
-Links: **[Play Now!](https://aikoyori.github.io/FNF-Aiko-Video-Game-Mix/)**
+Links: **[Play Now!](https://aikoyori.github.io/FNF-Aikoyori-Gaming-Mixes/)**
 
 **FNF Aikoyori's Gaming Mixes** is a mod for Friday Night Funkin' that aims to add custom songs from various games plus the characters.
 
