@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TextureAtlas imagePath="extra-ui-elements.png">
-	<!-- Created with Adobe Animate version 21.0.3.38773 -->
+	<!-- Created with Adobe Animate version 21.0.6.41649 -->
 	<!-- http://www.adobe.com/products/animate.html -->
-	<SubTexture name="sunBank0000" x="12" y="12" width="429" height="322"/>
+	<SubTexture name="sunBank0000" x="0" y="0" width="226" height="170"/>
 </TextureAtlas>
