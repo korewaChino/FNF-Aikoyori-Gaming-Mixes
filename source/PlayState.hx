@@ -980,16 +980,17 @@ class PlayState extends MusicBeatState
 		botPlayState.setFormat(Paths.font("vcr.ttf"), 42, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE,FlxColor.BLACK);
 		botPlayState.scrollFactor.set();
 
-		sunAmountText = new FlxText(1300, 800, 160, sunAmount+"", 60);
-		sunAmountText.setFormat(Paths.font("contb.ttf"), 60, 0x311902, CENTER);
+		sunAmountText = new FlxText(1162, 140, 103, sunAmount+"", 24);
+		sunAmountText.setFormat(Paths.font("contb.ttf"), 24, 0x311902, CENTER);
 		sunAmountText.scrollFactor.set();
 		sunAmountText.updateHitbox();
 		
 
-		var extraUI = new FlxSprite(1240,582);
+		var extraUI = new FlxSprite(1135,23);
 
 		extraUI.frames = Paths.getSparrowAtlas('extra-ui-elements');
 		extraUI.animation.addByPrefix('sunbankbg', 'sunBank', 24);
+		extraUI.scrollFactor.set();
 		extraUI.scrollFactor.set();
 		sunAmountText.updateHitbox();
 		add(extraUI);
@@ -1007,6 +1008,8 @@ class PlayState extends MusicBeatState
 
 		strumLineNotes.cameras = [camHUD];
 		notes.cameras = [camHUD];
+		sunAmountText.cameras = [camHUD];
+		extraUI.cameras = [camHUD];
 		healthBar.cameras = [camHUD];
 		healthBarBG.cameras = [camHUD];
 		iconP1.cameras = [camHUD];
