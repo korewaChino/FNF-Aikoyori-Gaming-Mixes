@@ -213,6 +213,7 @@ class PlayState extends MusicBeatState
 	private var saveNotes:Array<Float> = [];
 
 	private var executeModchart = false;
+	private var isSongPosBeingControlled = false;
 
 	// API stuff
 	
@@ -2051,6 +2052,7 @@ class PlayState extends MusicBeatState
 		{
 			if (startedCountdown)
 			{
+				if(!isSongPosBeingControlled)
 				Conductor.songPosition += FlxG.elapsed * 1000;
 				if (Conductor.songPosition >= 0)
 					startSong();
@@ -2059,6 +2061,7 @@ class PlayState extends MusicBeatState
 		else
 		{
 			// Conductor.songPosition = FlxG.sound.music.time;
+			if(!isSongPosBeingControlled)
 			Conductor.songPosition += FlxG.elapsed * 1000;
 			/*@:privateAccess
 			{
@@ -2068,10 +2071,12 @@ class PlayState extends MusicBeatState
 
 			if (!paused)
 			{
+				if(!isSongPosBeingControlled)
 				songTime += FlxG.game.ticks - previousFrameTime;
 				previousFrameTime = FlxG.game.ticks;
 
 				// Interpolation type beat
+			if(!isSongPosBeingControlled)
 				if (Conductor.lastSongPos != Conductor.songPosition)
 				{
 					songTime = (songTime + Conductor.songPosition) / 2;
@@ -2283,21 +2288,27 @@ class PlayState extends MusicBeatState
 					// FlxG.switchState(new TitleState());
 			}
 		}
+		if(isSongPosBeingControlled)
+			{
+				isSongPosBeingControlled = !isSongPosBeingControlled;
+			}
 		if(SONG.doesLoop){
 
 			if(curStep==SONG.loopAtStep)
-				{
-					var difficulty = '';
-					
+				{					
+					isSongPosBeingControlled=true;
+					trace("LOOP!!");
+					trace(SONG.loopToStep/8/(SONG.bpm/120000));
+					trace(Conductor.songPosition);
 					FlxG.sound.music.stop();
 					vocals.stop();
-
-					if (storyDifficulty == 0)
-						difficulty = '-easy';
-
-					if (storyDifficulty == 2)
-						difficulty = '-hard';
-					Conductor.songPosition=SONG.loopToStep/SONG.bpm*60000;
+					var funneh = (SONG.loopToStep/8/(SONG.bpm/120000))*1.0;
+					FlxG.sound.music.time = funneh;
+					songTime=funneh;
+					Conductor.lastSongPos=funneh;
+					Conductor.songPosition=funneh;
+					trace(Conductor.songPosition);
+					FlxG.sound.music.resume();
 					notes.clear();
 					generateSongWithoutCompromises(SONG.song);
 				}
