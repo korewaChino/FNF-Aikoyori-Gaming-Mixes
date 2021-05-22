@@ -2297,7 +2297,6 @@ class PlayState extends MusicBeatState
 
 					if (storyDifficulty == 2)
 						difficulty = '-hard';
-					PlayState.SONG = Song.loadFromJson(SONG.song.toLowerCase() + difficulty, SONG.song.toLowerCase());
 					Conductor.songPosition=SONG.loopToStep/SONG.bpm*60000;
 					notes.clear();
 					generateSongWithoutCompromises(SONG.song);
