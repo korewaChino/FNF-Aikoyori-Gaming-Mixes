@@ -110,7 +110,10 @@ class ChartingState extends MusicBeatState
 				noteStyle: 'normal',
 				stage: 'stage',
 				gimmick: 'none',
+				loopAtStep: 0,
+				loopToStep: 0,
 				speed: 1,
+				doesLoop: false,
 				validScore: false
 			};
 		}
@@ -263,9 +266,34 @@ class ChartingState extends MusicBeatState
 		var stepperSongVol:FlxUINumericStepper = new FlxUINumericStepper(10, 110, 0.1, 1, 0.1, 10, 1);
 		stepperSongVol.value = FlxG.sound.music.volume;
 		stepperSongVol.name = 'song_instvol';
-
+		//
+		//   AIKOYORI'S CUSTOM SONG INFO
+		//
 		var stepperSongVolLabel = new FlxText(74, 110, 'Instrumental Volume');
+        
+		var doesloop = new FlxUICheckBox(200, 110, null, null, "Does Loop", 100);
+		doesloop.checked = _song.doesLoop;
+		// _song.needsVoices = check_voices.checked;
+		doesloop.callback = function()
+		{
+			_song.doesLoop = check_voices.checked;
+			trace('LOOP??!');
+		};
 
+
+		var stepperLoopAtStepLabel = new FlxText(200, 125, 'Loop At Step');
+		var stepperLoopAtStep:FlxUINumericStepper = new FlxUINumericStepper(200, 140, 1, 0, 0, 99999, 0);
+		stepperLoopAtStep.value = _song.loopAtStep;
+		stepperLoopAtStep.name = 'song_loopat';
+
+		var stepperLoopToStepLabel = new FlxText(200, 155, 'Loop To Step');
+		var stepperLoopToStep:FlxUINumericStepper = new FlxUINumericStepper(200, 170, 1, 0, 0, 99999, 0);
+		stepperLoopToStep.value = _song.loopToStep;
+		stepperLoopToStep.name = 'song_loopto';
+
+
+
+		
 		var characters:Array<String> = CoolUtil.coolTextFile(Paths.txt('characterList'));
 		var gfVersions:Array<String> = CoolUtil.coolTextFile(Paths.txt('gfVersionList'));
 		var stages:Array<String> = CoolUtil.coolTextFile(Paths.txt('stageList'));
@@ -322,6 +350,7 @@ class ChartingState extends MusicBeatState
 
 
 		var tab_group_song = new FlxUI(null, UI_box);
+		
 		tab_group_song.name = "Song";
 		tab_group_song.add(UI_songTitle);
 		tab_group_song.add(restart);
@@ -339,6 +368,11 @@ class ChartingState extends MusicBeatState
 		tab_group_song.add(stepperVocalVolLabel);
 		tab_group_song.add(stepperSongVol);
 		tab_group_song.add(stepperSongVolLabel);
+        tab_group_song.add(doesloop);
+        tab_group_song.add(stepperLoopAtStepLabel);
+        tab_group_song.add(stepperLoopAtStep);
+        tab_group_song.add(stepperLoopToStepLabel);
+        tab_group_song.add(stepperLoopToStep);
 		
 		var tab_group_assets = new FlxUI(null, UI_box);
 		tab_group_assets.name = "Assets";
@@ -600,6 +634,14 @@ class ChartingState extends MusicBeatState
 				if (nums.value <= 0.1)
 					nums.value = 0.1;
 				FlxG.sound.music.volume = nums.value;
+			}
+			else if (wname == 'song_loopat')
+			{
+				_song.loopAtStep = Std.int(nums.value);
+			}
+			else if (wname == 'song_loopto')
+			{
+				_song.loopToStep = Std.int(nums.value);
 			}
 		}
 		else if (id == FlxUIDropDownMenu.CLICK_EVENT && (sender is FlxUIDropDownMenu))

@@ -1498,6 +1498,126 @@ class PlayState extends MusicBeatState
 
 		generatedMusic = true;
 	}
+	private function generateSongWithoutCompromises(dataPath:String):Void
+	{
+		// FlxG.log.add(ChartParser.parse());
+
+		var songData = SONG;
+		Conductor.changeBPM(songData.bpm);
+
+		curSong = songData.song;
+
+		if (SONG.needsVoices)
+			vocals = new FlxSound().loadEmbedded(Paths.voices(PlayState.SONG.song));
+		else
+			vocals = new FlxSound();
+
+		FlxG.sound.list.add(vocals);
+
+		//notes = new FlxTypedGroup<Note>();
+		//add(notes);
+
+		var noteData:Array<SwagSection>;
+
+		// NEW SHIT
+		noteData = songData.notes;
+
+		var playerCounter:Int = 0;
+
+		// Per song offset check
+		#if windows
+			var songPath = 'assets/data/' + PlayState.SONG.song.toLowerCase() + '/';
+			for(file in sys.FileSystem.readDirectory(songPath))
+			{
+				var path = haxe.io.Path.join([songPath, file]);
+				if(!sys.FileSystem.isDirectory(path))
+				{
+					if(path.endsWith('.offset'))
+					{
+						trace('Found offset file: ' + path);
+						songOffset = Std.parseFloat(file.substring(0, file.indexOf('.off')));
+						break;
+					}else {
+						trace('Offset file not found. Creating one @: ' + songPath);
+						sys.io.File.saveContent(songPath + songOffset + '.offset', '');
+					}
+				}
+			}
+		#end
+		var daBeats:Int = 0; // Not exactly representative of 'daBeats' lol, just how much it has looped
+		for (section in noteData)
+		{
+			var coolSection:Int = Std.int(section.lengthInSteps / 4);
+
+			for (songNotes in section.sectionNotes)
+			{
+				var daStrumTime:Float = songNotes[0] + FlxG.save.data.offset + songOffset;
+				if (daStrumTime < 0)
+					daStrumTime = 0;
+				var daNoteData:Int = Std.int(songNotes[1] % 4);
+
+				var gottaHitNote:Bool = section.mustHitSection;
+
+				if (songNotes[1] > 3)
+				{
+					gottaHitNote = !section.mustHitSection;
+				}
+
+				var oldNote:Note;
+				if (unspawnNotes.length > 0)
+					oldNote = unspawnNotes[Std.int(unspawnNotes.length - 1)];
+				else
+					oldNote = null;
+
+				var swagNote:Note = new Note(daStrumTime, daNoteData, oldNote, false, songNotes[3]);
+				swagNote.sustainLength = songNotes[2];
+				if(songNotes.length >= 4)
+					{
+						swagNote.noteType = songNotes[3];
+					}
+				swagNote.scrollFactor.set(0, 0);
+
+				var susLength:Float = swagNote.sustainLength;
+
+				susLength = susLength / Conductor.stepCrochet;
+				unspawnNotes.push(swagNote);
+
+				for (susNote in 0...Math.floor(susLength))
+				{
+					oldNote = unspawnNotes[Std.int(unspawnNotes.length - 1)];
+
+					var sustainNote:Note = new Note(daStrumTime + (Conductor.stepCrochet * susNote) + Conductor.stepCrochet, daNoteData, oldNote, true, songNotes[3]);
+					sustainNote.scrollFactor.set();
+					unspawnNotes.push(sustainNote);
+
+					sustainNote.mustPress = gottaHitNote;
+
+					if (sustainNote.mustPress)
+					{
+						sustainNote.x += FlxG.width / 2; // general offset
+					}
+				}
+
+				swagNote.mustPress = gottaHitNote;
+
+				if (swagNote.mustPress)
+				{
+					swagNote.x += FlxG.width / 2; // general offset
+				}
+				else
+				{
+				}
+			}
+			daBeats += 1;
+		}
+
+		// trace(unspawnNotes.length);
+		// playerCounter += 1;
+
+		unspawnNotes.sort(sortByShit);
+
+		//generatedMusic = true;
+	}
 
 	function sortByShit(Obj1:Note, Obj2:Note):Int
 	{
@@ -2058,6 +2178,7 @@ class PlayState extends MusicBeatState
 								}else triggeredAlready = false;
 							}
 						}
+
 					}
 				}
 			}
@@ -2162,7 +2283,26 @@ class PlayState extends MusicBeatState
 					// FlxG.switchState(new TitleState());
 			}
 		}
+		if(SONG.doesLoop){
 
+			if(curStep==SONG.loopAtStep)
+				{
+					var difficulty = '';
+					
+					FlxG.sound.music.stop();
+					vocals.stop();
+
+					if (storyDifficulty == 0)
+						difficulty = '-easy';
+
+					if (storyDifficulty == 2)
+						difficulty = '-hard';
+					PlayState.SONG = Song.loadFromJson(SONG.song.toLowerCase() + difficulty, SONG.song.toLowerCase());
+					Conductor.songPosition=SONG.loopToStep/SONG.bpm*60000;
+					notes.clear();
+					generateSongWithoutCompromises(SONG.song);
+				}
+		}
 		if (curSong == 'Bopeebo')
 		{
 			switch (curBeat)
