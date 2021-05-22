@@ -14,12 +14,12 @@ Links: **[itch.io page](https://ninja-muffin24.itch.io/funkin) ⋅ [Newgrounds](
 
 Links: **[GameBanana mod page](https://gamebanana.com/gamefiles/16761) ⋅ [play in browser](https://funkin.puyo.xyz) ⋅ [latest stable release](https://github.com/KadeDev/Kade-Engine/releases/latest) ⋅ [latest development build (windows)](https://ci.appveyor.com/project/KadeDev/kade-engine-windows/build/artifacts) ⋅ [latest development build (macOS)](https://ci.appveyor.com/project/KadeDev/kade-engine-macos/build/artifacts) ⋅ [latest development build (linux)](https://ci.appveyor.com/project/KadeDev/kade-engine-linux/build/artifacts)**
 
-**REMEMBER**: This is a **mod**. This is not the vanilla game and should be treated as a **modification**. This is not and probably will never be official, so don't get confused.
-
 ## FNF Aikoyori's Gaming Mixes
 Links: **[Play Now!](https://aikoyori.github.io/FNF-Aikoyori-Gaming-Mixes/)**
 
-**FNF Aikoyori's Gaming Mixes** is a mod for Friday Night Funkin' that aims to add custom songs from various games plus the characters.
+**FNF Aikoyori's Gaming Mixes** is a mod for Friday Night Funkin' that aims to add custom songs from various games plus the characters. New mechanics based on the games are also introduced.
+
+**REMEMBER**: This is a **mod**. This is not the vanilla game and should be treated as a **modification**. This is not and probably will never be official, so don't get confused.
 
 # Credits
 ### Friday Night Funkin'
