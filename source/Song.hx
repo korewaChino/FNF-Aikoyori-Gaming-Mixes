@@ -25,6 +25,9 @@ typedef SwagSong =
 	var doesLoop:Bool;
 	var loopAtStep:Int;
 	var loopToStep:Int;
+	var isBossFight:Bool;
+	var opponentHealth:Float;
+	var startingHealth:Float;
 
 }
 
@@ -43,6 +46,9 @@ class Song
 	public var stage:String = 'stage';
 	public var gimmick:String = 'none';
 	public var doesLoop:Bool = false;
+	public var isBossFight:Bool = false;
+	public var opponentHealth:Float = 2.0;
+	public var startingHealth:Float = 1.0;
 
 
 	public var loopAtStep:Int = 0;

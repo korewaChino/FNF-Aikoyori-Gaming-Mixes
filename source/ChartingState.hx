@@ -114,6 +114,9 @@ class ChartingState extends MusicBeatState
 				loopToStep: 0,
 				speed: 1,
 				doesLoop: false,
+				isBossFight: false,
+				opponentHealth: 2,
+				startingHealth: 1,
 				validScore: false
 			};
 		}
@@ -291,6 +294,16 @@ class ChartingState extends MusicBeatState
 		stepperLoopToStep.value = _song.loopToStep;
 		stepperLoopToStep.name = 'song_loopto';
 
+		var opponentHealthLabel = new FlxText(200, 185, 'Opponent Health');
+		var stepperOpponentHealth:FlxUINumericStepper = new FlxUINumericStepper(200, 200, 0.05, 2, 0, 99999, 2);
+		stepperOpponentHealth.value = _song.opponentHealth;
+		stepperOpponentHealth.name = 'song_opponenthealth';
+
+		var startingHealthLabel = new FlxText(200, 215, 'Starting Health');
+		var stepperStartingHealth:FlxUINumericStepper = new FlxUINumericStepper(200, 230, 0.05, 1, 0, 99999, 2);
+		stepperStartingHealth.value = _song.startingHealth;
+		stepperStartingHealth.name = 'song_startinghealth';
+
 
 
 		
@@ -373,6 +386,10 @@ class ChartingState extends MusicBeatState
         tab_group_song.add(stepperLoopAtStep);
         tab_group_song.add(stepperLoopToStepLabel);
         tab_group_song.add(stepperLoopToStep);
+        tab_group_song.add(opponentHealthLabel);
+        tab_group_song.add(stepperOpponentHealth);
+        tab_group_song.add(startingHealthLabel);
+        tab_group_song.add(stepperStartingHealth);
 		
 		var tab_group_assets = new FlxUI(null, UI_box);
 		tab_group_assets.name = "Assets";
@@ -642,6 +659,14 @@ class ChartingState extends MusicBeatState
 			else if (wname == 'song_loopto')
 			{
 				_song.loopToStep = Std.int(nums.value);
+			}
+			else if (wname == 'song_opponenthealth')
+			{
+				_song.opponentHealth = (nums.value);
+			}
+			else if (wname == 'song_startinghealth')
+			{
+				_song.startingHealth = (nums.value);
 			}
 		}
 		else if (id == FlxUIDropDownMenu.CLICK_EVENT && (sender is FlxUIDropDownMenu))

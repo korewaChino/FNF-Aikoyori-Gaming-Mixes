@@ -126,7 +126,8 @@ class PlayState extends MusicBeatState
 	private var curSong:String = "";
 
 	private var gfSpeed:Int = 1;
-	private var health:Float = 1;
+	private var health:Float = 1.0;
+	private var maxhealth:Float = 2.0;
 	private var combo:Int = 0;
 	public static var misses:Int = 0;
 	private var accuracy:Float = 0.00;
@@ -341,7 +342,7 @@ class PlayState extends MusicBeatState
 			case 'thorns':
 				dialogue = CoolUtil.coolTextFile(Paths.txt('thorns/thornsDialogue'));
 		}
-
+			
 		switch(SONG.stage)
 		{
 			case 'halloween': 
@@ -742,7 +743,7 @@ class PlayState extends MusicBeatState
 			}
 		}
 		var gfVersion:String = 'gf';
-
+		
 		switch (SONG.gfVersion)
 		{
 			case 'gf-car':
@@ -903,6 +904,22 @@ class PlayState extends MusicBeatState
 			prevCamFollow = null;
 		}
 
+		if(SONG.startingHealth>0){
+			health = SONG.startingHealth;
+			SONG.startingHealth = health;}
+		else{
+			health = 1;
+			SONG.startingHealth = 1;}
+		if(SONG.opponentHealth>SONG.startingHealth)
+		{
+			maxhealth = SONG.opponentHealth;
+		}
+		else
+		{
+			maxhealth = 2;
+			SONG.opponentHealth = 2;
+		}
+
 		add(camFollow);
 
 		FlxG.camera.follow(camFollow, LOCKON, 0.04 * (30 / (cast (Lib.current.getChildAt(0), Main)).getFPS()));
@@ -946,7 +963,7 @@ class PlayState extends MusicBeatState
 		add(healthBarBG);
 
 		healthBar = new FlxBar(healthBarBG.x + 4, healthBarBG.y + 4, RIGHT_TO_LEFT, Std.int(healthBarBG.width - 8), Std.int(healthBarBG.height - 8), this,
-			'health', 0, 2);
+			'health', 0, maxhealth);
 		healthBar.scrollFactor.set();
 		healthBar.createFilledBar(0xFFFF0000, 0xFF66FF33);
 		// healthBar
@@ -2004,8 +2021,8 @@ class PlayState extends MusicBeatState
 		iconP1.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(healthBar.percent, 0, 100, 100, 0) * 0.01) - iconOffset);
 		iconP2.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(healthBar.percent, 0, 100, 100, 0) * 0.01)) - (iconP2.width - iconOffset);
 
-		if (health > 2)
-			health = 2;
+		if (health > maxhealth)
+			health = maxhealth;
 
 		if (healthBar.percent < 20)
 			iconP1.animation.curAnim.curFrame = 1;
@@ -2897,7 +2914,7 @@ class PlayState extends MusicBeatState
 					if(daNote.hittingNotRequired)
 					ss = false;
 					goods++;
-					if (health < 2)
+					if (health < maxhealth)
 						health += 0.04;
 					if (FlxG.save.data.accuracyMod == 0)
 						totalNotesHit += 0.75;
@@ -2921,7 +2938,7 @@ class PlayState extends MusicBeatState
 				else 
 					{
 					noteDoSomething(daNote);
-					if (health < 2)
+					if (health < maxhealth)
 						health += 0.1;
 					if (FlxG.save.data.accuracyMod == 0)
 						totalNotesHit += 1;
