@@ -1947,7 +1947,7 @@ class PlayState extends MusicBeatState
 				maxNPS = nps;
 		}
 
-		if (FlxG.keys.justPressed.NINE)
+		if (FlxG.keys.justPressed.FOUR)
 		{
 			if (iconP1.animation.curAnim.name == 'bf-old')
 				iconP1.animation.play(SONG.player1);
@@ -2050,7 +2050,7 @@ class PlayState extends MusicBeatState
 			#end
 		}
 
-		if (FlxG.keys.justPressed.ZERO)
+		if (FlxG.keys.justPressed.NINE)
 		{
 			FlxG.switchState(new AnimationDebug(SONG.player1));
 			#if windows
