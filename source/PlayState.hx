@@ -1507,14 +1507,13 @@ class PlayState extends MusicBeatState
 		Conductor.changeBPM(songData.bpm);
 
 		curSong = songData.song;
-
+		/*
 		if (SONG.needsVoices)
 			vocals = new FlxSound().loadEmbedded(Paths.voices(PlayState.SONG.song));
 		else
 			vocals = new FlxSound();
-
-		FlxG.sound.list.add(vocals);
-
+		*/
+		//FlxG.sound.list.add(vocals);
 		//notes = new FlxTypedGroup<Note>();
 		//add(notes);
 
@@ -2300,8 +2299,8 @@ class PlayState extends MusicBeatState
 					trace("LOOP!!");
 					trace(SONG.loopToStep/8/(SONG.bpm/120000));
 					trace(Conductor.songPosition);
-					FlxG.sound.music.stop();
-					vocals.stop();
+					FlxG.sound.music.pause();
+					vocals.pause();
 					var funneh = (SONG.loopToStep/8/(SONG.bpm/120000))*1.0;
 					FlxG.sound.music.time = funneh;
 					songTime=funneh;
