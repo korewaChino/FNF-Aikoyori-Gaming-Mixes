@@ -910,7 +910,7 @@ class PlayState extends MusicBeatState
 		else{
 			health = 1;
 			SONG.startingHealth = 1;}
-		if(SONG.opponentHealth>SONG.startingHealth)
+		if(SONG.opponentHealth>=SONG.startingHealth)
 		{
 			maxhealth = SONG.opponentHealth;
 		}

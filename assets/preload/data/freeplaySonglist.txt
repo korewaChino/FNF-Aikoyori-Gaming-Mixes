@@ -17,5 +17,6 @@ Winter Horrorland:monster-christmas:5
 Senpai:senpai:6
 Roses:senpai:6
 Thorns:spirit:6
+Loonboon:wallnut:-1
 Brainiac-Maniac:zomboss:-1
 Zombies-on-your-lawn:sunflower:-1
