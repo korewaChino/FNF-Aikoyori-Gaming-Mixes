@@ -904,13 +904,7 @@ class PlayState extends MusicBeatState
 			prevCamFollow = null;
 		}
 
-		if(SONG.startingHealth>0){
-			health = SONG.startingHealth;
-			SONG.startingHealth = health;}
-		else{
-			health = 1;
-			SONG.startingHealth = 1;}
-		if(SONG.opponentHealth>=SONG.startingHealth)
+		if(SONG.opponentHealth>0)
 		{
 			maxhealth = SONG.opponentHealth;
 		}
@@ -920,6 +914,12 @@ class PlayState extends MusicBeatState
 			SONG.opponentHealth = 2;
 		}
 
+		if(SONG.startingHealth>0){
+			health = SONG.startingHealth;
+			SONG.startingHealth = health;}
+		else{
+			health = 1;
+			SONG.startingHealth = 1;}
 		add(camFollow);
 
 		FlxG.camera.follow(camFollow, LOCKON, 0.04 * (30 / (cast (Lib.current.getChildAt(0), Main)).getFPS()));
