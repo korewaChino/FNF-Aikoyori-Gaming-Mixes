@@ -285,12 +285,12 @@ class ChartingState extends MusicBeatState
 
 
 		var stepperLoopAtStepLabel = new FlxText(200, 125, 'Loop At Step');
-		var stepperLoopAtStep:FlxUINumericStepper = new FlxUINumericStepper(200, 140, 1, 0, -999999, 999999, 0);
+		var stepperLoopAtStep:FlxUINumericStepper = new FlxUINumericStepper(200, 140, 1, 0, 0, 999999, 0);
 		stepperLoopAtStep.value = _song.loopAtStep;
 		stepperLoopAtStep.name = 'song_loopat';
 
 		var stepperLoopToStepLabel = new FlxText(200, 155, 'Loop To Step');
-		var stepperLoopToStep:FlxUINumericStepper = new FlxUINumericStepper(200, 170, 1, 0, -999999, 999999, 0);
+		var stepperLoopToStep:FlxUINumericStepper = new FlxUINumericStepper(200, 170, 1, 0, 0, 999999, 0);
 		stepperLoopToStep.value = _song.loopToStep;
 		stepperLoopToStep.name = 'song_loopto';
 
@@ -1368,6 +1368,16 @@ class ChartingState extends MusicBeatState
 	}
 
 	function clearSong():Void
+	{
+		for (daSection in 0..._song.notes.length)
+		{
+			_song.notes[daSection].sectionNotes = [];
+		}
+
+		updateGrid();
+	}
+
+	function shiftNotes():Void
 	{
 		for (daSection in 0..._song.notes.length)
 		{
