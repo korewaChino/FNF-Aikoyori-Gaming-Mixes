@@ -304,19 +304,19 @@ class ChartingState extends MusicBeatState
 		stepperStartingHealth.value = _song.startingHealth;
 		stepperStartingHealth.name = 'song_startinghealth';
 
-		var shiftNoteDialLabel = new FlxText(200, 245, 'Shift Note FWD by (Measure)');
+		var shiftNoteDialLabel = new FlxText(200, 245, 'Shift Note FWD by (Section)');
 		var stepperShiftNoteDial:FlxUINumericStepper = new FlxUINumericStepper(200, 260, 1, 0, -1000, 1000, 0);
 		stepperShiftNoteDial.name = 'song_shiftnote';
-		var shiftNoteDialLabel2 = new FlxText(200, 275, 'Shift Note FWD by (step)');
+		var shiftNoteDialLabel2 = new FlxText(200, 275, 'Shift Note FWD by (quarter note)');
 		var stepperShiftNoteDialstep:FlxUINumericStepper = new FlxUINumericStepper(200, 290, 1, 0, -1000, 1000, 0);
 		stepperShiftNoteDialstep.name = 'song_shiftnotems';
 		var shiftNoteDialLabel3 = new FlxText(200, 305, 'Shift Note FWD by (ms)');
-		var stepperShiftNoteDialms:FlxUINumericStepper = new FlxUINumericStepper(200, 320, 1, 0, -1000, 1000, 0);
+		var stepperShiftNoteDialms:FlxUINumericStepper = new FlxUINumericStepper(200, 320, 1, 0, -1000, 1000, 2);
 		stepperShiftNoteDialms.name = 'song_shiftnotems';
 
 		var shiftNoteButton:FlxButton = new FlxButton(200, 335, "Shift", function()
 		{
-			shiftNotes(Std.int(stepperShiftNoteDial.value),Std.int(stepperShiftNoteDialms.value),Std.int(stepperShiftNoteDialms.value));
+			shiftNotes(Std.int(stepperShiftNoteDial.value),Std.int(stepperShiftNoteDialstep.value),Std.int(stepperShiftNoteDialms.value));
 		});
 
 
@@ -1171,11 +1171,11 @@ class ChartingState extends MusicBeatState
 
 	function changeSection(sec:Int = 0, ?updateMusic:Bool = true):Void
 	{
-		trace('changing section' + sec);
+		//trace('changing section' + sec);
 
 		if (_song.notes[sec] != null)
 		{
-			trace('naw im not null');
+			//trace('naw im not null');
 			curSection = sec;
 
 			updateGrid();
@@ -1202,7 +1202,10 @@ class ChartingState extends MusicBeatState
 			updateSectionUI();
 		}
 		else
-			trace('bro wtf I AM NULL');
+			{
+
+			}
+			//trace('bro wtf I AM NULL');
 	}
 
 	function copySection(?sectionNum:Int = 1)
@@ -1249,7 +1252,7 @@ class ChartingState extends MusicBeatState
 	{
 		if (curSelectedNote != null)
 			stepperSusLength.value = curSelectedNote[2];
-		trace(curSelectedNote);
+		//trace(curSelectedNote);
 	}
 
 	function updateGrid():Void
@@ -1348,7 +1351,7 @@ class ChartingState extends MusicBeatState
 		_song.notes.push(sec);
 	}
 
-	private function prependSection(lengthInSteps:Int = 16):Void
+	private function prependSection(lengthInSteps:Int = 16):SwagSection
 	{
 		var sec:SwagSection = {
 			lengthInSteps: lengthInSteps,
@@ -1360,7 +1363,7 @@ class ChartingState extends MusicBeatState
 			altAnim: false
 		};
 
-		_song.notes.unshift(sec);
+		return sec;
 	}
 
 	function selectNote(note:Note):Void
@@ -1415,21 +1418,44 @@ class ChartingState extends MusicBeatState
 
 	function shiftNotes(measure:Int=0,step:Int=0,ms:Int = 0):Void
 	{
-		if(measure > 0)
+		var newSong = [];
+		
+		var millisecadd = (((measure*4)+step/4)*(60000/_song.bpm))+ms;
+		if(millisecadd > 0)
 			{
-				for(i in 0...measure)
+				for(i in 0...Std.int((measure/16+step+(ms/(60000/_song.bpm)*16))))
 					{
-						prependSection();
+						newSong.unshift(prependSection());
 					}
 			}
-		for (daSection in 0..._song.notes.length)
+		for (daSection1 in 0..._song.notes.length)
+			{
+				newSong.push(prependSection());
+			}
+
+		for (daSection in 0...(_song.notes.length))
 		{
-			for(daNote in 0..._song.notes[daSection].sectionNotes.length)
-				{
-					//trace(_song.notes[daSection].sectionNotes[daNote][0]);
-					_song.notes[daSection].sectionNotes[daNote][0] += (measure*4*(60000/_song.bpm));
+			//trace("section "+daSection);
+			for(daNote in 0...(_song.notes[daSection].sectionNotes.length))
+				{	
+					//trace("note #"+daNote+" with data "+_song.notes[daSection].sectionNotes[daNote]);
+					var newtiming = _song.notes[daSection].sectionNotes[daNote][0]+millisecadd;
+					//trace("newtiming",newtiming);
+					//trace("future section",futureSection);
+					if(newtiming<0)
+					{
+						newtiming = 0;
+					}
+					var futureSection = Math.floor(newtiming/4/(60000/_song.bpm));
+					_song.notes[daSection].sectionNotes[daNote][0] = newtiming;
+					newSong[futureSection].sectionNotes.push(_song.notes[daSection].sectionNotes[daNote]);
+
+					//newSong.notes[daSection].sectionNotes.remove(_song.notes[daSection].sectionNotes[daNote]);
 				}
+
 		}
+		//trace("DONE BITCH");
+		_song.notes = newSong;
 		updateGrid();
 		updateNoteUI();
 	}
