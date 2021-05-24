@@ -2314,11 +2314,11 @@ class PlayState extends MusicBeatState
 				{					
 					isSongPosBeingControlled=true;
 					trace("LOOP!!");
-					trace(SONG.loopToStep/8/(SONG.bpm/120000));
+					trace(SONG.loopToStep/4/(60000/SONG.bpm));
 					trace(Conductor.songPosition);
 					FlxG.sound.music.pause();
 					vocals.pause();
-					var funneh = (SONG.loopToStep/8/(SONG.bpm/120000))*1.0;
+					var funneh = (SONG.loopToStep/4/(60000/SONG.bpm))*1.0;
 					FlxG.sound.music.time = funneh;
 					songTime=funneh;
 					Conductor.lastSongPos=funneh;

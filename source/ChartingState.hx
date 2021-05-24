@@ -159,7 +159,7 @@ class ChartingState extends MusicBeatState
 		leftIcon.setPosition(0, -100);
 		rightIcon.setPosition(gridBG.width / 2, -100);
 
-		bpmTxt = new FlxText(1000, 50, 0, "", 16);
+		bpmTxt = new FlxText(FlxG.width/2, 50, 0, "", 16);
 		bpmTxt.scrollFactor.set();
 		add(bpmTxt);
 
@@ -178,8 +178,8 @@ class ChartingState extends MusicBeatState
 
 		UI_box = new FlxUITabMenu(null, tabs, true);
 
-		UI_box.resize(300, 400);
-		UI_box.x = FlxG.width / 2;
+		UI_box.resize(400, 680);
+		UI_box.x = FlxG.width / 2 + 200;
 		UI_box.y = 20;
 		add(UI_box);
 
@@ -304,6 +304,20 @@ class ChartingState extends MusicBeatState
 		stepperStartingHealth.value = _song.startingHealth;
 		stepperStartingHealth.name = 'song_startinghealth';
 
+		var shiftNoteDialLabel = new FlxText(200, 245, 'Shift Note FWD by (Measure)');
+		var stepperShiftNoteDial:FlxUINumericStepper = new FlxUINumericStepper(200, 260, 1, 0, -1000, 1000, 0);
+		stepperShiftNoteDial.name = 'song_shiftnote';
+		var shiftNoteDialLabel2 = new FlxText(200, 275, 'Shift Note FWD by (step)');
+		var stepperShiftNoteDialstep:FlxUINumericStepper = new FlxUINumericStepper(200, 290, 1, 0, -1000, 1000, 0);
+		stepperShiftNoteDialstep.name = 'song_shiftnotems';
+		var shiftNoteDialLabel3 = new FlxText(200, 305, 'Shift Note FWD by (ms)');
+		var stepperShiftNoteDialms:FlxUINumericStepper = new FlxUINumericStepper(200, 320, 1, 0, -1000, 1000, 0);
+		stepperShiftNoteDialms.name = 'song_shiftnotems';
+
+		var shiftNoteButton:FlxButton = new FlxButton(200, 335, "Shift", function()
+		{
+			shiftNotes(Std.int(stepperShiftNoteDial.value),Std.int(stepperShiftNoteDialms.value),Std.int(stepperShiftNoteDialms.value));
+		});
 
 
 		
@@ -390,6 +404,13 @@ class ChartingState extends MusicBeatState
         tab_group_song.add(stepperOpponentHealth);
         tab_group_song.add(startingHealthLabel);
         tab_group_song.add(stepperStartingHealth);
+        tab_group_song.add(shiftNoteDialLabel);
+        tab_group_song.add(stepperShiftNoteDial);
+        tab_group_song.add(shiftNoteDialLabel2);
+        tab_group_song.add(stepperShiftNoteDialstep);
+        tab_group_song.add(shiftNoteDialLabel3);
+        tab_group_song.add(stepperShiftNoteDialms);
+        tab_group_song.add(shiftNoteButton);
 		
 		var tab_group_assets = new FlxUI(null, UI_box);
 		tab_group_assets.name = "Assets";
@@ -1327,6 +1348,21 @@ class ChartingState extends MusicBeatState
 		_song.notes.push(sec);
 	}
 
+	private function prependSection(lengthInSteps:Int = 16):Void
+	{
+		var sec:SwagSection = {
+			lengthInSteps: lengthInSteps,
+			bpm: _song.bpm,
+			changeBPM: false,
+			mustHitSection: true,
+			sectionNotes: [],
+			typeOfSection: 0,
+			altAnim: false
+		};
+
+		_song.notes.unshift(sec);
+	}
+
 	function selectNote(note:Note):Void
 	{
 		var swagNum:Int = 0;
@@ -1377,14 +1413,25 @@ class ChartingState extends MusicBeatState
 		updateGrid();
 	}
 
-	function shiftNotes():Void
+	function shiftNotes(measure:Int=0,step:Int=0,ms:Int = 0):Void
 	{
+		if(measure > 0)
+			{
+				for(i in 0...measure)
+					{
+						prependSection();
+					}
+			}
 		for (daSection in 0..._song.notes.length)
 		{
-			_song.notes[daSection].sectionNotes = [];
+			for(daNote in 0..._song.notes[daSection].sectionNotes.length)
+				{
+					//trace(_song.notes[daSection].sectionNotes[daNote][0]);
+					_song.notes[daSection].sectionNotes[daNote][0] += (measure*4*(60000/_song.bpm));
+				}
 		}
-
 		updateGrid();
+		updateNoteUI();
 	}
 
 	private function addNote(?n:Note):Void
