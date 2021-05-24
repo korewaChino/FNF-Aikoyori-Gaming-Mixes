@@ -56,7 +56,8 @@ class OptionsMenu extends MusicBeatState
 			new BotPlay("Showcase your charts and mods with autoplay.")
 		]),
 		new OptionCatagory("Extras", [
-			new CheckForUpdatesOption("Check for Latest version of Aikoyori's Gaming Mixes"),
+			new CheckForUpdatesOption("Check for Latest version of Aikoyori's Gaming Mixes."),
+			new DefaultVolumeOption("Set Default Volume when you open the game so it doesn't make your ears bleed."),
 		])
 		
 	];

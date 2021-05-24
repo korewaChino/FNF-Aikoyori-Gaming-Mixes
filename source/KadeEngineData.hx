@@ -75,6 +75,9 @@ class KadeEngineData
 		if (FlxG.save.data.checkupdates == null)
 			FlxG.save.data.checkupdates = true;
 
+		if (FlxG.save.data.volume == null)
+			FlxG.save.data.volume = 0.5;
+
 		Conductor.recalculateTimings();
 
 		Main.watermarks = FlxG.save.data.watermark;

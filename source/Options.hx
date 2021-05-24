@@ -448,6 +448,52 @@ class ScrollSpeedOption extends Option
 		return true;
 	}
 }
+class DefaultVolumeOption extends Option
+{
+	public function new(desc:String)
+	{
+		super();
+		description = desc;
+		acceptValues = true;
+	}
+
+	public override function press():Bool
+	{
+		return false;
+	}
+
+	private override function updateDisplay():String
+	{
+		return "Default Volume";
+	}
+
+	override function right():Bool {
+		FlxG.save.data.volume += 0.1;
+
+		if (FlxG.save.data.volume < 0)
+			FlxG.save.data.volume = 0;
+
+		if (FlxG.save.data.volume > 1)
+			FlxG.save.data.volume = 1;
+
+		OptionsMenu.versionShit.text = "Current Default Volume: " + HelperFunctions.truncateFloat(FlxG.save.data.volume,1) + " - Description - " + description;
+		return true;
+	}
+
+	override function left():Bool {
+		FlxG.save.data.volume -= 0.1;
+
+		if (FlxG.save.data.volume < 0)
+			FlxG.save.data.volume = 0;
+
+		if (FlxG.save.data.volume > 1)
+			FlxG.save.data.volume = 1;
+
+
+		OptionsMenu.versionShit.text = "Current Default Volume: " + HelperFunctions.truncateFloat(FlxG.save.data.volume,1) + " - Description - " + description;
+		return true;
+	}
+}
 
 
 class RainbowFPSOption extends Option

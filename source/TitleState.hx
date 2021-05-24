@@ -92,6 +92,7 @@ class TitleState extends MusicBeatState
 
 		KadeEngineData.initSave();
 
+		FlxG.sound.volume = FlxG.save.data.volume;
 		Highscore.load();
 
 		if (FlxG.save.data.weekUnlocked != null)
